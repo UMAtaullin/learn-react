@@ -3,13 +3,17 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import cls from './SideBar.module.css'
 
 const SideBar = () => {
+  const toggleSideBar = () => {
+    const sideBar = document.querySelector('.sidebar')
+    sideBar.classList.toggle(cls.close)
+  }
   return (
     <Router>
       <nav className='sidebar'>
         <ul>
           <li>
             <span className='logo'>UMA</span>
-            <button id='toggle-btn'>
+            <button id='toggle-btn' onClick={toggleSideBar}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 height='24px'
@@ -21,7 +25,7 @@ const SideBar = () => {
               </svg>
             </button>
           </li>
-          <li className={cls.active}>
+          <li className='active'>
             <Link to='/profile'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -35,7 +39,7 @@ const SideBar = () => {
               <span>Home</span>
             </Link>
           </li>
-          <li className={cls.active}>
+          <li className='active'>
             <Link to='/profile'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
