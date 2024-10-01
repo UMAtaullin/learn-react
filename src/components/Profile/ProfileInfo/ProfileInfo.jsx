@@ -10,10 +10,10 @@ const ProfileInfo = () => {
         />
       </div>
       <div className={cls.description}>
-        <p className={cls.name}>Name: Ural Ataullin</p>
-        <p className={cls.name}>Date: 24.01.1988</p>
-        <p className={cls.name}>Telegram: @UMAtaullin</p>
-        <p className={cls.name}>Interests: programming</p>
+        <p className={cls.name}><span>Name:</span> Ural Ataullin</p>
+        <p className={cls.name}><span>Date:</span> 24.01.1988</p>
+        <p className={cls.name}><span>Telegram:</span> @UMAtaullin</p>
+        <p className={cls.name}><span>Interests:</span> programming</p>
       </div>
     </div>
   )

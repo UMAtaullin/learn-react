@@ -4,16 +4,16 @@ import cls from './SideBar.module.css'
 
 const SideBar = () => {
   const toggleSideBar = () => {
-    const sideBar = document.querySelector('.sidebar')
+    const sideBar = document.querySelector(`.${cls.sidebar}`)
     sideBar.classList.toggle(cls.close)
   }
   return (
     <Router>
-      <nav className='sidebar'>
+      <nav className={cls.sidebar}>
         <ul>
           <li>
-            <span className='logo'>UMA</span>
-            <button id='toggle-btn' onClick={toggleSideBar}>
+            <span className={cls.logo}>UMA</span>
+            <button className={cls.toggle} onClick={toggleSideBar}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 height='24px'
@@ -25,7 +25,7 @@ const SideBar = () => {
               </svg>
             </button>
           </li>
-          <li className='active'>
+          <li className={cls.active}>
             <Link to='/profile'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -39,7 +39,7 @@ const SideBar = () => {
               <span>Home</span>
             </Link>
           </li>
-          <li className='active'>
+          <li className={cls.active}>
             <Link to='/profile'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
