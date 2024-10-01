@@ -7,7 +7,7 @@ const ProfilePosts = () => {
       <h2>Posts</h2>
       <div className={cls.row}>
         <textarea placeholder="What's new?" />
-        <button>Add</button>
+        <button className={cls.add}>Add</button>
       </div>
       <div className={cls.posts}>
         <Post />

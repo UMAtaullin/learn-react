@@ -1,6 +1,6 @@
 .container {
   color: white;
-  width: 35em;
+  max-width: 35em;
 
   h2 {
     margin: 1em 0;
@@ -15,7 +15,6 @@
   border-radius: 30px;
   padding-left: 20px;
   margin-bottom: 25px;
-  /* gap: 80px; */
 }
 
 textarea {
@@ -27,7 +26,7 @@ textarea {
   align-items: center;
 }
 
-button {
+.add {
   flex: 1;
   border: none;
   outline: none;
