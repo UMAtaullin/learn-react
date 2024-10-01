@@ -1,12 +1,18 @@
+import Post from './Post/Post'
+import cls from'./ProfilePosts.module.css'
+
 const ProfilePosts = () => {
   return (
-    <div className='posts'>
-      My posts
-      <div>New post</div>
-      <div className='items'>
-        <div className='item'>post 1</div>
-        <div className='item'>post 2</div>
-        <div className='item'>post 3</div>
+    <div className={cls.container}>
+      <h2>Posts</h2>
+      <div className={cls.row}>
+        <textarea placeholder="What's new?" />
+        <button>Add</button>
+      </div>
+      <div className={cls.posts}>
+        <Post />
+        <Post />
+        <Post />
       </div>
     </div>
   )
