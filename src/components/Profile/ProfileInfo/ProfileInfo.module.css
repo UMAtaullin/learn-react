@@ -1,0 +1,10 @@
+.profile {
+  display: flex;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.ava img {
+  width: 150px;
+}
