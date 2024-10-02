@@ -1,0 +1,14 @@
+@import '../styles/variables.css';
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 20px;
+
+  .message {
+    border: 1px solid var(--line-clr);
+    border-radius: .7em;
+    padding: 1em;
+  }
+}
