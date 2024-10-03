@@ -16,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "stylelint": "stylelint \"**/*.css\" --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -37,7 +39,10 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^3.3.3",
     "stylelint": "^16.9.0",
-    "stylelint-order": "^6.0.4"
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-order": "^6.0.4",
+    "stylelint-order-config-standard": "^0.1.3"
   }
 }

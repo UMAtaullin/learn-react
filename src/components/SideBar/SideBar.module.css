@@ -1,16 +1,19 @@
 .sidebar {
+  position: sticky;
+  top: 0;
+
+  overflow: hidden;
+  align-self: start;
+
+  box-sizing: border-box;
   width: 200px;
   height: 100vh;
   padding: 5px 1em;
-  background-color: var(--base-clr);
 
-  position: sticky;
-  top: 0;
-  overflow: hidden;
   transition: 300ms ease-in-out;
-  box-sizing: border-box;
+
   border-right: 1px solid var(--line-clr);
-  align-self: start;
+  background-color: var(--base-clr);
 
   ul {
     list-style: none;
@@ -19,14 +22,12 @@
       .toggle {
         margin-left: auto;
         padding: 1em;
-        border: none;
-        border-radius: .5em;
-        background: none;
+
         cursor: pointer;
 
-        svg {
-          transition: rotate 150ms ease;
-        }
+        border: none;
+        border-radius: 0.5em;
+        background: none;
       }
 
       .toggle:hover {
@@ -34,40 +35,46 @@
       }
 
       a {
-        padding: .85em;
-        border-radius: .5em;
         display: flex;
         align-items: center;
+
+        padding: 0.85em;
+
         text-decoration: none;
+
+        border-radius: 0.5em;
         gap: 1em;
       }
 
       a:hover,
       a:focus {
+        color: var(--focus-text-clr);
+
         /* hover effect - это эфф наведения */
         background-color: var(--hover-clr);
-        color: var(--focus-text-clr);
       }
-
-
 
       svg {
         fill: var(--text-clr);
+
         flex-shrink: 0;
       }
-
     }
 
     li:first-child {
       display: flex;
       justify-content: flex-end;
+
       margin-bottom: 16px;
 
       .logo {
-        padding: .85em;
-        border-radius: .5em;
-        font-weight: 600;
+        padding: 0.85em;
+
         text-decoration: none;
+
+        border-radius: 0.5em;
+
+        font-weight: 600;
       }
 
       li.active a {
@@ -76,7 +83,6 @@
         svg {
           fill: var(--accent-clr);
         }
-
       }
     }
   }

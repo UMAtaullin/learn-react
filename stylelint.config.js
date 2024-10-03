@@ -1,12 +1,7 @@
 module.exports = {
-  plugins: [
-    'stylelint-order'
-  ],
+  plugins: ['stylelint-order'],
   rules: {
-    'order/order': [
-      'custom-properties',
-      'declarations'
-    ],
+    'order/order': ['custom-properties', 'declarations'],
     'order/properties-order': [
       // Размеры
       'width',
@@ -62,7 +57,7 @@ module.exports = {
       // Прочие свойства
       'opacity',
       'overflow',
-      'transition'
-    ]
-  }
-}
+      'transition',
+    ],
+  },
+};

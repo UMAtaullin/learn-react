@@ -1,6 +1,7 @@
 .container {
-  color: white;
   max-width: 35em;
+
+  color: white;
 
   h2 {
     margin: 1em 0;
@@ -11,29 +12,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #edeef0;
-  border-radius: 30px;
-  padding-left: 20px;
+
   margin-bottom: 25px;
+  padding-left: 20px;
+
+  border-radius: 30px;
+  background: #edeef0;
 }
 
 textarea {
+  align-items: center;
   flex: 3;
+
+  padding: 0 5px;
+
   border: none;
   outline: none;
   background: transparent;
-  padding: 0 5px;
-  align-items: center;
 }
 
 .add {
   flex: 1;
-  border: none;
-  outline: none;
+
   padding: 16px 0;
-  border-radius: 40px;
-  background: #ff5945;
-  color: #fff;
-  font-size: 16px;
+
   cursor: pointer;
+
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  background: #ff5945;
+
+  font-size: 16px;
 }

@@ -1,22 +1,25 @@
 .post {
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
+
+  margin-bottom: 1em;
   padding: 10px;
+  padding: min(1em, 15%);
 
   border: 1px solid var(--line-clr);
   border-radius: 1em;
-  margin-bottom: 1em;
-  padding: min(1em, 15%);
 }
 
 .ava img {
   width: 4em;
+
   border-radius: 50%;
 }
 
 .message {
   flex: 1;
+
   margin-left: 10px;
 }
 
@@ -24,6 +27,6 @@
   padding: 10px;
 
   span {
-    margin-right: .5em;
+    margin-right: 0.5em;
   }
 }

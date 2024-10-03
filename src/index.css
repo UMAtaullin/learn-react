@@ -16,16 +16,17 @@
 }
 
 html {
-  font-family: Poppins, 'Segoe UI', 'Segoe UI', Tahoma, Geneva, sans-serif;
+  font-family: Poppins, 'Segoe UI', Tahoma, Geneva, sans-serif;
   line-height: 1.5rem;
 }
 
-.App {
+.app {
   display: grid;
-  grid-template-columns: auto 1fr;
 
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--base-clr);
+
   color: var(--text-clr);
+  background-color: var(--base-clr);
+  grid-template-columns: auto 1fr;
 }

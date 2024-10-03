@@ -5,14 +5,14 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <SideBar/>
-        <div className="main">
-          <Routes>
-            <Route path="/profile/" element={<Profile />} />
-            <Route path="/messages/" element={<Messages />} />
-          </Routes>
-        </div>
+    <div className="app">
+      <SideBar />
+      <div className="main">
+        <Routes>
+          <Route path="/profile/" element={<Profile />} />
+          <Route path="/messages/" element={<Messages />} />
+        </Routes>
+      </div>
     </div>
   );
 }
