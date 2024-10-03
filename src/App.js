@@ -9,8 +9,8 @@ function App() {
       <SideBar/>
         <div className="main">
           <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/messages" element={<Messages />} />
+            <Route path="/profile/" element={<Profile />} />
+            <Route path="/messages/" element={<Messages />} />
           </Routes>
         </div>
     </div>

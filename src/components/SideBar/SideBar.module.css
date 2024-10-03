@@ -37,7 +37,6 @@
         border-radius: .5em;
         padding: .85em;
         text-decoration: none;
-        color: var(--text-clr);
         display: flex;
         align-items: center;
         gap: 1em;
@@ -46,6 +45,12 @@
       a:hover {
         /* hover effect - это эфф наведения */
         background-color: var(--hover-clr);
+      }
+
+      a:focus {
+        /* outline: 1px solid var(--focus-text-clr); */
+        background-color: var(--focus-btn-clr);
+        color: var(--accent-clr);
       }
 
       svg {
