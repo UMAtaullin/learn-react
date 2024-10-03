@@ -42,16 +42,14 @@
         gap: 1em;
       }
 
-      a:hover {
+      a:hover,
+      a:focus {
         /* hover effect - это эфф наведения */
         background-color: var(--hover-clr);
+        color: var(--focus-text-clr);
       }
 
-      a:focus {
-        /* outline: 1px solid var(--focus-text-clr); */
-        background-color: var(--focus-btn-clr);
-        color: var(--accent-clr);
-      }
+
 
       svg {
         fill: var(--text-clr);
