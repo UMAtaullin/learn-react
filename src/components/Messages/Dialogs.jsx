@@ -1,6 +1,6 @@
-import cls from './Messages.module.css';
+import namesData from '../../data/namesData';
 import DialogItem from './DialogItem';
-import namesData from '../data'
+import cls from './Messages.module.css';
 
 const Dialogs = () => {
   let name = namesData.map((name, index) => (
@@ -9,8 +9,7 @@ const Dialogs = () => {
   return (
     <div className={cls.dialogs}>
       {name}
-    </div>
-  );
+    </div>);
 };
 
 export default Dialogs;

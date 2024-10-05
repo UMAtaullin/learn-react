@@ -1,24 +1,38 @@
-import {Routes, Route} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import namesData from '../../data/namesData';
 import cls from './Messages.module.css';
-import DialogUral from './PersonalDialogs/DialogUral';
 import DialogElon from './PersonalDialogs/DialogElon';
+import DialogUral from './PersonalDialogs/DialogUral';
 import SelectDialog from './PersonalDialogs/SelectDialog';
-import namesData from '../data';
 
 const Dialog = () => {
   return (
     <div className={cls.dialog}>
       <Routes>
-        {namesData.map((name) => {
-          let path = name.toLowerCase().replace(' ', '');
-          return (
-            <Route key={path} path={`/${path}/`} element={<DialogComponent name={name} />} />
-          );
-        })}
+        {renderRoutes()}
         <Route path="*" element={<SelectDialog />} />
       </Routes>
     </div>
   );
+};
+
+// Вспомогательная функция для генерации маршрутов
+const renderRoutes = () => {
+  return namesData.map((userName) => {
+    const path = createPath(userName);
+    return (
+      <Route
+        key={path}
+        path={`/${path}/`}
+        element={<DialogComponent name={userName} />}
+      />
+    );
+  });
+};
+
+// Функция для создания пути
+const createPath = (name) => {
+  return name.toLowerCase().replace(' ', '');
 };
 
 const DialogComponent = ({ name }) => {
