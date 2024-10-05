@@ -1,23 +1,14 @@
-import { NavLink } from 'react-router-dom';
 import cls from './Messages.module.css';
+import DialogItem from './DialogItem';
+import namesData from '../data'
 
 const Dialogs = () => {
+  let name = namesData.map((name, index) => (
+    <DialogItem key={index} name={name} />
+  ));
   return (
     <div className={cls.dialogs}>
-      <div className={cls.person}>
-        <NavLink to="ural"
-          className={({ isActive }) => (isActive ? cls.active : '')}
-        >
-          Ural Ataullin
-        </NavLink>
-      </div>
-      <div className={cls.person}>
-        <NavLink to="elon"
-          className={({ isActive }) => (isActive ? cls.active : '')}
-        >
-          Elon Musk
-        </NavLink>
-      </div>
+      {name}
     </div>
   );
 };

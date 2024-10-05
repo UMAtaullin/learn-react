@@ -38,6 +38,10 @@
 
 .message {
   margin-bottom: 10px;
+
+  .name {
+    color: #333;
+  }
 }
 
 .message:last-child {
