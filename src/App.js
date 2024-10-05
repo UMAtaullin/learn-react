@@ -10,7 +10,7 @@ function App() {
       <div className="main">
         <Routes>
           <Route path="/profile/" element={<Profile />} />
-          <Route path="/messages/" element={<Messages />} />
+          <Route path="/messages/*" element={<Messages />} />
         </Routes>
       </div>
     </div>

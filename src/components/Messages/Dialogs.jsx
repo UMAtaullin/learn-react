@@ -1,13 +1,23 @@
+import { NavLink } from 'react-router-dom';
 import cls from './Messages.module.css';
 
 const Dialogs = () => {
   return (
     <div className={cls.dialogs}>
-      <div className={cls.person}>Ural Ataullin"</div>
-      <div className={cls.person}>Elon Musk"</div>
-      <div className={cls.person}>Roman Savin"</div>
-      <div className={cls.person}>Tony Stark"</div>
-      <div className={cls.person}>Natasha Romanova"</div>
+      <div className={cls.person}>
+        <NavLink to="ural"
+          className={({ isActive }) => (isActive ? cls.active : '')}
+        >
+          Ural Ataullin
+        </NavLink>
+      </div>
+      <div className={cls.person}>
+        <NavLink to="elon"
+          className={({ isActive }) => (isActive ? cls.active : '')}
+        >
+          Elon Musk
+        </NavLink>
+      </div>
     </div>
   );
 };

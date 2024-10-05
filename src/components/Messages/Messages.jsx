@@ -5,7 +5,7 @@ import cls from './Messages.module.css'
 
 const Messages = () => {
   return (
-    <div className={cls.messages}>
+    <div className={cls.messagesPage}>
       <Dialogs />
       <Dialog />
     </div>
