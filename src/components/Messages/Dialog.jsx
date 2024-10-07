@@ -1,15 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import namesData from '../../data/namesData';
 import cls from './Messages.module.css';
 import DialogElon from './PersonalDialogs/DialogElon';
 import DialogUral from './PersonalDialogs/DialogUral';
 import SelectDialog from './PersonalDialogs/SelectDialog';
 
-const Dialog = () => {
+const Dialog = (props) => {
   return (
     <div className={cls.dialog}>
       <Routes>
-        {renderRoutes()}
+        {renderRoutes(props.names)}
         <Route path="*" element={<SelectDialog />} />
       </Routes>
     </div>
@@ -17,8 +16,8 @@ const Dialog = () => {
 };
 
 // Вспомогательная функция для генерации маршрутов
-const renderRoutes = () => {
-  return namesData.map((userName) => {
+const renderRoutes = (names) => {
+  return names.map((userName) => {
     const path = createPath(userName);
     return (
       <Route

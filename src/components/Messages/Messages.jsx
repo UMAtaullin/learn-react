@@ -3,11 +3,12 @@ import Dialogs from './Dialogs';
 import cls from './Messages.module.css'
 
 
-const Messages = () => {
+const Messages = (props) => {
+  debugger
   return (
     <div className={cls.messagesPage}>
-      <Dialogs />
-      <Dialog />
+      <Dialogs names={props.dialogsPage.namesData} />
+      <Dialog names={props.dialogsPage.namesData} />
     </div>
   );
 };
