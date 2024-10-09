@@ -1,4 +1,4 @@
-import Messages from './components/Messages/Messages';
+import Messenger from './components/Messenger/Messenger';
 import Profile from './components/Profile/Profile';
 import SideBar from './components/SideBar/SideBar';
 import { Routes, Route } from 'react-router-dom';
@@ -12,7 +12,7 @@ const App = (props) => {
           <Route path="/profile/" 
             element={<Profile posts ={props.state.profilePage.postsData} />} />
           <Route path="/messages/*" 
-            element={<Messages dialogsPage={props.state.dialogsPage} />} />
+            element={<Messenger messengerPage={props.state.messengerPage} />} />
         </Routes>
       </div>
     </div>

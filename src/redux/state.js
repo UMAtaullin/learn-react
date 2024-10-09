@@ -1,7 +1,7 @@
 let state = {
-  dialogsPage: {
+  messengerPage: {
     namesData: [
-    'Ural Ataullin', 'Elon Musk', 'Tulsan Big', 'Alyssa Earhart', 'Billie Vite'
+    'Sergey Brin', 'Elon Musk', 'Tulsan Big', 'Alyssa Earhart', 'Billie Vite'
   ],
     messagesData: [
       { id: 1, message: 'Hi there, I\'m Ural, how are you?', name: 'Ural' },
