@@ -10,9 +10,13 @@ const App = (props) => {
       <div className="main">
         <Routes>
           <Route path="/profile/" 
-            element={<Profile posts ={props.state.profilePage.postsData} />} />
+            element={<Profile 
+            posts = {props.state.profilePage.postsData} 
+            addPost={props.addPost} />} />
           <Route path="/messages/*" 
-            element={<Messenger messengerPage={props.state.messengerPage} />} />
+            element={<Messenger 
+              messengerPage={props.state.messengerPage} 
+              />} />
         </Routes>
       </div>
     </div>

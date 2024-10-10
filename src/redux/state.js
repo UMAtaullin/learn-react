@@ -1,3 +1,5 @@
+import { rerenderTree } from '..';
+
 let state = {
   messengerPage: {
     namesData: [
@@ -20,5 +22,16 @@ let state = {
     ]
   }
 };
+
+export let addPost = (text) => {
+  debugger;
+  let newPost = {
+    id: 4,
+    text: text,
+    like: '0'
+  };
+  state.profilePage.postsData.push(newPost);
+  rerenderTree();
+}
 
 export default state;
