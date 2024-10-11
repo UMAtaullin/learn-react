@@ -12,7 +12,9 @@ const App = (props) => {
           <Route path="/profile/" 
             element={<Profile 
             posts = {props.state.profilePage.postsData} 
-            addPost={props.addPost} />} />
+            printText = {props.state.profilePage.printText} 
+            addPost={props.addPost} 
+            changePost={props.changePost} />} />
           <Route path="/messages/*" 
             element={<Messenger 
               messengerPage={props.state.messengerPage} 

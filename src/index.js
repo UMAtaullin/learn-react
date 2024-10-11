@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import state, { addPost } from './redux/state';
+import state, { addPost, changePost } from './redux/state';
 
 // addPost('I\'m learning React!');
 
@@ -14,7 +14,8 @@ export const rerenderTree = () => {
       <BrowserRouter>
         <App
           state={state}
-          addPost={addPost} />
+          addPost={addPost} 
+          changePost={changePost} />
       </BrowserRouter>
     </React.StrictMode>
   );

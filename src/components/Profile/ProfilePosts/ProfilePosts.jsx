@@ -10,11 +10,13 @@ const ProfilePosts = (props) => {
 
   const addPost = () => {
     debugger
-    let newPostText = refElement.current.value;
-    if (newPostText) {
-      props.addPost(newPostText);
-      refElement.current.value = '';
-    }
+    props.addPost();
+    props.changePost('');
+  }
+
+  const changePost = () =>{
+    let newText = refElement.current.value;
+    props.changePost(newText);
   }
 
   return (
@@ -23,7 +25,9 @@ const ProfilePosts = (props) => {
       <div className={cls.row}>
         <textarea 
           placeholder="What's new?" 
-          ref={refElement} />
+          ref={refElement} 
+          onChange={changePost} 
+          value={props.printText} />
         <button 
           className={cls.add}
           onClick={addPost}>

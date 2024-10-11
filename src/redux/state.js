@@ -19,19 +19,27 @@ let state = {
       { id: 1, text: 'I love traveling!', like: '155' },
       { id: 2, text: 'I\'m a photographer.', like: '125' },
       { id: 3, text: 'I\'m always learning new things.', like: '185' },
-    ]
+    ],
+    printText: ''
   }
 };
 
-export let addPost = (text) => {
+export let addPost = () => {
   debugger;
   let newPost = {
     id: 4,
-    text: text,
+    text: state.profilePage.printText,
     like: '0'
   };
   state.profilePage.postsData.push(newPost);
   rerenderTree();
 }
+
+export let changePost = (printText) => {
+  state.profilePage.printText = printText;
+  rerenderTree();
+}
+
+window.state = state;
 
 export default state;
