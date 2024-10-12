@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import state, { addPost, changePost } from './redux/state';
+import state, { addPost, changePost, subscribe } from './redux/state';
 
-// addPost('I\'m learning React!');
 
 export const rerenderTree = () => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,3 +21,5 @@ export const rerenderTree = () => {
 }
 
 rerenderTree()
+
+subscribe(rerenderTree);

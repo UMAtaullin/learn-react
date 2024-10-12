@@ -1,4 +1,6 @@
-import { rerenderTree } from '..';
+let rerenderTree = () => {
+  console.log('Rerendering the tree...');
+}
 
 let state = {
   messengerPage: {
@@ -25,7 +27,7 @@ let state = {
 };
 
 export let addPost = () => {
-  debugger;
+  // debugger;
   let newPost = {
     id: 4,
     text: state.profilePage.printText,
@@ -40,6 +42,8 @@ export let changePost = (printText) => {
   rerenderTree();
 }
 
-window.state = state;
+export const subscribe = (callback) => {
+  rerenderTree = callback;
+}
 
 export default state;

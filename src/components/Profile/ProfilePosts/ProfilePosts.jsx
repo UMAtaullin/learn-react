@@ -9,7 +9,7 @@ const ProfilePosts = (props) => {
   ));
 
   const addPost = () => {
-    debugger
+    // debugger
     props.addPost();
     props.changePost('');
   }

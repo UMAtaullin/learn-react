@@ -4,7 +4,7 @@ import ProfilePosts from './ProfilePosts/ProfilePosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-  debugger
+  // debugger
   return (
     <div className={cls.profile}>
       <ProfileInfo />
