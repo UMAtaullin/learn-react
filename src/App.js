@@ -9,16 +9,15 @@ const App = (props) => {
       <SideBar />
       <div className="main">
         <Routes>
-          <Route path="/profile/" 
-            element={<Profile 
-            posts = {props.state.profilePage.postsData} 
-            printText = {props.state.profilePage.printText} 
-            addPost={props.addPost} 
-            changePost={props.changePost} />} />
-          <Route path="/messages/*" 
-            element={<Messenger 
-              messengerPage={props.state.messengerPage} 
-              />} />
+          <Route path="/profile/"
+            element={<Profile
+              posts={props.state.profilePage.postsData}
+              printText={props.state.profilePage.printText}
+              dispatch={props.dispatch} />} />
+          <Route path="/messages/*"
+            element={<Messenger
+              messengerPage={props.state.messengerPage}
+            />} />
         </Routes>
       </div>
     </div>

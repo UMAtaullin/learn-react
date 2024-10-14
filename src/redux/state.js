@@ -36,21 +36,26 @@ const store = {
     this._rerenderTree = callback;
   },
   
-  addPost () {
-    let newPost = {
-      id: this._state.profilePage.postsData.length + 1,
-      text: this._state.profilePage.printText,
-      like: '0'
-    }
-    this._state.profilePage.postsData.push(newPost);
-    this._rerenderTree();
-  },
-  
-  changePost (printText) {
-    this._state.profilePage.printText = printText;
-    this._rerenderTree();
+  dispatch(action) {
+    switch (action.type) {
+      case 'ADD_POST':
+        let newPost = {
+          id: this._state.profilePage.postsData.length + 1,
+          text: this._state.profilePage.printText,
+          like: '0'
+        }
+        this._state.profilePage.postsData.push(newPost);
+        this._state.profilePage.printText = '';
+        this._rerenderTree();
+        break;
+      case 'CHANGE_POST':
+        this._state.profilePage.printText = action.printText;
+        this._rerenderTree();
+        break;
+      default:
+        return;
+      }
   }
-
 }
 
 export default store;

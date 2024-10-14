@@ -9,14 +9,12 @@ const ProfilePosts = (props) => {
   ));
 
   const addPost = () => {
-    // debugger
-    props.addPost();
-    props.changePost('');
+    props.dispatch({type: 'ADD_POST'})
   }
 
   const changePost = () =>{
     let newText = refElement.current.value;
-    props.changePost(newText);
+    props.dispatch({type: 'CHANGE_POST', printText: newText})
   }
 
   return (
