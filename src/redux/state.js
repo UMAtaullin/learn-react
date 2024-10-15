@@ -1,4 +1,5 @@
-
+const ADD_POST = 'ADD_POST'
+const CHANGE_POST = 'CHANGE_POST'
 const store = {
   _state: {
     messengerPage: {
@@ -38,7 +39,7 @@ const store = {
   
   dispatch(action) {
     switch (action.type) {
-      case 'ADD_POST':
+      case ADD_POST:
         let newPost = {
           id: this._state.profilePage.postsData.length + 1,
           text: this._state.profilePage.printText,
@@ -48,7 +49,7 @@ const store = {
         this._state.profilePage.printText = '';
         this._rerenderTree();
         break;
-      case 'CHANGE_POST':
+      case CHANGE_POST:
         this._state.profilePage.printText = action.printText;
         this._rerenderTree();
         break;
@@ -56,6 +57,11 @@ const store = {
         return;
       }
   }
+}
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const changePostActionCreator = (newText) => {
+  return { type: CHANGE_POST, printText: newText };
 }
 
 export default store;

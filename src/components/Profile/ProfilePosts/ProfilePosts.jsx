@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import cls from './ProfilePosts.module.css';
+import { addPostActionCreator, changePostActionCreator } from '../../../redux/state';
 
 const ProfilePosts = (props) => {
   let refElement = React.createRef();
@@ -9,12 +10,12 @@ const ProfilePosts = (props) => {
   ));
 
   const addPost = () => {
-    props.dispatch({type: 'ADD_POST'})
+    props.dispatch(addPostActionCreator())
   }
 
   const changePost = () =>{
     let newText = refElement.current.value;
-    props.dispatch({type: 'CHANGE_POST', printText: newText})
+    props.dispatch(changePostActionCreator(newText))
   }
 
   return (
