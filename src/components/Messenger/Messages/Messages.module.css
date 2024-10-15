@@ -1,0 +1,38 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+  padding-left: 20px;
+
+  border-radius: 30px;
+  background: #edeef0;
+}
+
+textarea {
+  align-items: center;
+  flex: 3;
+
+  padding: 0 5px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+button {
+  flex: 1;
+
+  padding: 16px 0;
+
+  cursor: pointer;
+
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  background: #ff5945;
+
+  font-size: 16px;
+}
