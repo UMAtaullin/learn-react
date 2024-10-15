@@ -1,10 +1,11 @@
 import Message from './Message';
 
 const Messages = (props) => {
-  let text = props.messages.map(el => <Message text={el.message} />);
+  let messages = props.messages.map(el => 
+    <Message name={el.name} text={el.message} />);
   return (
     <div className="messages">
-      {text}
+      {messages}
     </div>
   )
 }
