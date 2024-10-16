@@ -4,7 +4,7 @@ import cls from './ProfilePosts.module.css';
 import { addPostActionCreator, changePostActionCreator } from '../../../redux/state';
 
 const ProfilePosts = (props) => {
-  let refElement = React.createRef();
+  // debugger
   let posts = props.posts.map((el) => (
     <Post key={el.id} text={el.text} like={el.like} />
   ));
@@ -13,8 +13,8 @@ const ProfilePosts = (props) => {
     props.dispatch(addPostActionCreator())
   }
 
-  const changePost = () =>{
-    let newText = refElement.current.value;
+  const changePost = (event) =>{
+    let newText = event.target.value;
     props.dispatch(changePostActionCreator(newText))
   }
 
@@ -24,7 +24,6 @@ const ProfilePosts = (props) => {
       <div className={cls.row}>
         <textarea 
           placeholder="What's new?" 
-          ref={refElement} 
           onChange={changePost} 
           value={props.printText} />
         <button 

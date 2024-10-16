@@ -9,6 +9,8 @@ const Messenger = (props) => {
       <Messages
         names={props.messengerPage.namesData}
         messages={props.messengerPage.messagesData}
+        printMessage={props.messengerPage.printMessage}
+        dispatch={props.dispatch}
       />
     </div>
   );
