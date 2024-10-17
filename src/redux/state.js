@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD_POST'
-const CHANGE_POST = 'CHANGE_POST'
-const ADD_MESSAGE = 'ADD_MESSAGE'
-const CHANGE_MESSAGE = 'CHANGE_MESSAGE'
+import messageReducer from './messageReducer'
+import profileReducer from './profileReducer'
+
 const store = {
   _state: {
     messengerPage: {
@@ -44,48 +43,12 @@ const store = {
   },
   
   dispatch(action) {
-    switch (action.type) {
-      case ADD_POST:
-        let newPost = {
-          id: this._state.profilePage.postsData.length + 1,
-          text: this._state.profilePage.printText,
-          like: '0'
-        }
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.printText = '';
-        this._rerenderTree();
-        break;
-      case CHANGE_POST:
-        this._state.profilePage.printText = action.printText;
-        this._rerenderTree();
-        break;
-      case ADD_MESSAGE:
-        let newMessage = {
-          id: this._state.messengerPage.messagesData.length + 1,
-          message: this._state.messengerPage.printMessage,
-          name: 'Name'
-        };
-        this._state.messengerPage.messagesData.push(newMessage);
-        this._state.messengerPage.printMessage = '';
-        this._rerenderTree();
-        break;
-      case CHANGE_MESSAGE:
-        this._state.messengerPage.printMessage = action.printMessage;
-        this._rerenderTree();
-        break;
-      default:
-        return;
-      }
+    this._state.profilePage = profileReducer(
+      this._state.profilePage, action);
+    this._state.messengerPage = messageReducer(
+      this._state.messengerPage, action);
+    this._rerenderTree();
   }
-}
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const changePostActionCreator = (newText) => {
-  return { type: CHANGE_POST, printText: newText };
-}
-export const changeMessageActionCreator = (newMessage) => {
-  return { type: CHANGE_MESSAGE, printMessage: newMessage };
 }
 
 export default store;

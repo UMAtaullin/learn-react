@@ -16,7 +16,9 @@ const App = (props) => {
               dispatch={props.dispatch} />} />
           <Route path="/messages/*"
             element={<Messenger
-              messengerPage={props.state.messengerPage}
+              names={props.state.messengerPage.namesData}
+              messages={props.state.messengerPage.messagesData}
+              printMessage={props.state.messengerPage.printMessage}
               dispatch={props.dispatch}
             />} />
         </Routes>

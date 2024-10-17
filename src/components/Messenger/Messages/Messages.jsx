@@ -1,10 +1,10 @@
-import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/state';
+import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
 import Message from './Message/Message';
 import cls from './Messages.module.css';
 import React from 'react';
 
 const Messages = (props) => {
-  // debugger
+  debugger
 
   let messages = props.messages.map((el) => (
     <Message key={el.id} name={el.name} text={el.message} />
