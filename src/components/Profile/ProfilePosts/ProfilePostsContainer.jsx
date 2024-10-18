@@ -3,6 +3,7 @@ import { addPostActionCreator, changePostActionCreator } from '../../../redux/pr
 import ProfilePosts from './ProfilePosts';
 
 const ProfilePostsContainer = (props) => {
+  debugger
 
   let state = props.store.getState()
 

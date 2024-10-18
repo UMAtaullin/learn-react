@@ -1,5 +1,5 @@
 import Dialogs from './Dialogs/Dialogs';
-import Messages from './Messages/Messages';
+import MessagesContainer from './Messages/MessagesContainer';
 import cls from './Messenger.module.css'
 
 const Messenger = (props) => {
@@ -7,11 +7,8 @@ const Messenger = (props) => {
   return (
     <div className={cls.messengerPage}>
       <Dialogs names={props.names} />
-      <Messages
-        names={props.names}
-        messages={props.messages}
-        printMessage={props.printMessage}
-        dispatch={props.dispatch}
+      <MessagesContainer
+        store={props.store}
       />
     </div>
   );

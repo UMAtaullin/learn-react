@@ -16,9 +16,7 @@ const App = (props) => {
           <Route path="/messages/*"
             element={<Messenger
               names={props.state.messagePage.namesData}
-              messages={props.state.messagePage.messagesData}
-              printMessage={props.state.messagePage.printMessage}
-              dispatch={props.dispatch}
+              store={props.store} 
             />} />
         </Routes>
       </div>

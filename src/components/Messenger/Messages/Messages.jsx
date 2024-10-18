@@ -1,10 +1,8 @@
-import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
 import Message from './Message/Message';
 import cls from './Messages.module.css';
 import React from 'react';
 
 const Messages = (props) => {
-  debugger
 
   let messages = props.messages.map((el) => (
     <Message key={el.id} name={el.name} text={el.message} />
@@ -12,12 +10,13 @@ const Messages = (props) => {
 
   const changeMessage = (event) => {
     let newMessage = event.target.value;
-    props.dispatch(changeMessageActionCreator(newMessage))
+    props.changeMessage(newMessage)
   }
 
   const sentMessage = () => {
-    props.dispatch(addMessageActionCreator())
+    props.sentMessage()
   }
+  
   return (
     <div className={cls.messages}>
       {messages}
