@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post/Post';
 import cls from './ProfilePosts.module.css';
-import { addPostActionCreator, changePostActionCreator } from '../../../redux/profileReducer';
 
 const ProfilePosts = (props) => {
   // debugger
@@ -10,12 +9,12 @@ const ProfilePosts = (props) => {
   ));
 
   const addPost = () => {
-    props.dispatch(addPostActionCreator())
+    props.addPost()
   }
 
   const changePost = (event) =>{
     let newText = event.target.value;
-    props.dispatch(changePostActionCreator(newText))
+    props.changePost(newText)
   }
 
   return (

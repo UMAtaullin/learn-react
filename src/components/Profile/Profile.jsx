@@ -1,17 +1,15 @@
 import React from 'react';
 import cls from './Profile.module.css';
-import ProfilePosts from './ProfilePosts/ProfilePosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfilePostsContainer from './ProfilePosts/ProfilePostsContainer';
 
 const Profile = (props) => {
   // debugger
   return (
     <div className={cls.profile}>
       <ProfileInfo />
-      <ProfilePosts 
-        printText={props.printText} 
-        posts={props.posts} 
-        dispatch={props.dispatch} />
+      <ProfilePostsContainer
+        store={props.store} />
     </div>
   );
 };

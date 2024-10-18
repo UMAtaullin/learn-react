@@ -15,6 +15,7 @@ export const rerenderTree = () => {
     <React.StrictMode>
       <BrowserRouter>
         <App
+          store={store}
           state={store.getState()}
           dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
