@@ -1,6 +1,6 @@
 import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
 import React from 'react';
-import Message from './Message/Message';
+import Messages from './Messages';
 
 
 const MessagesContainer = (props) => {
@@ -17,11 +17,11 @@ const MessagesContainer = (props) => {
   }
 
   return (
-    <Message
-      messages={state.messagePage.messagesData}
-      printMessage={state.messagePage.printMessage}
+    <Messages
       changeMessage={changeMessage}
       sentMessage={sentMessage}
+      messages={state.messagePage.messagesData}
+      printMessage={state.messagePage.printMessage}
     />
   );
 };
