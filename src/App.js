@@ -4,7 +4,7 @@ import SideBar from './components/SideBar/SideBar';
 import { Routes, Route } from 'react-router-dom';
 
 const App = (props) => {
-  debugger
+  // debugger
   return (
     <div className="app">
       <SideBar />
@@ -12,11 +12,12 @@ const App = (props) => {
         <Routes>
           <Route path="/profile/"
             element={<Profile
-              store={props.store} />} />
+              // store={props.store} 
+              />} />
           <Route path="/messages/*"
             element={<Messenger
               names={props.state.messagePage.namesData}
-              store={props.store} 
+              // store={props.store} 
             />} />
         </Routes>
       </div>
