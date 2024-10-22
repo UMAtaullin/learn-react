@@ -1,45 +1,47 @@
+import { connect } from 'react-redux';
 import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
-import React from 'react';
+// import React from 'react';
 import Messages from './Messages';
-import StoreContext from '../../../StoreContext';
+// import StoreContext from '../../../StoreContext';
 
 
-const MessagesContainer = (props) => {
-  debugger
+// const MessagesContainer = (props) => {
 
-  // let state = props.store.getState()
+//   return (
+//     <StoreContext.Consumer>
+//       {(store) => {
+//         let state = store.getState()
 
-  // const changeMessage = (newMessage) => {
-  //   props.store.dispatch(changeMessageActionCreator(newMessage));
-  // };
+//         const changeMessage = (newMessage) => {
+//           store.dispatch(changeMessageActionCreator(newMessage));
+//         };
 
-  // const sentMessage = () => {
-  //   props.store.dispatch(addMessageActionCreator())
-  // }
+//         const sentMessage = () => {
+//           store.dispatch(addMessageActionCreator())
+//         }
 
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState()
+//        return <Messages
+//           changeMessage={changeMessage}
+//           sentMessage={sentMessage}
+//           messages={state.messagePage.messagesData}
+//           printMessage={state.messagePage.printMessage}
+//         />
+//       }
+//     }
+//     </StoreContext.Consumer>
+//   );
+// };
 
-        const changeMessage = (newMessage) => {
-          store.dispatch(changeMessageActionCreator(newMessage));
-        };
+const mapStateToProps = (state) => ({
+  messages: state.messagePage.messagesData,
+  printMessage: state.messagePage.printMessage,
+});
 
-        const sentMessage = () => {
-          store.dispatch(addMessageActionCreator())
-        }
+const mapDispatchToProps = ({
+  changeMessage: changeMessageActionCreator,
+  sentMessage: addMessageActionCreator,
+});
 
-       return <Messages
-          changeMessage={changeMessage}
-          sentMessage={sentMessage}
-          messages={state.messagePage.messagesData}
-          printMessage={state.messagePage.printMessage}
-        />
-      }
-    }
-    </StoreContext.Consumer>
-  );
-};
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
 
 export default MessagesContainer;

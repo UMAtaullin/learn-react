@@ -18,12 +18,16 @@ const profileReducer = (state=initialState, action) => {
         text: state.printText,
         like: '0'
       }
-      state.postsData.push(newPost);
-      state.printText = '';
-      return state;
+
+      let copyState = {...state}
+      copyState.postsData = [...state.postsData]
+      copyState.postsData.push(newPost);
+      copyState.printText = '';
+      return copyState;
     case CHANGE_POST:
-      state.printText = action.printText;
-      return state;
+      let stateCopy = { ...state }
+      stateCopy.printText = action.printText;
+      return stateCopy;
     default:
       return state;
     }
