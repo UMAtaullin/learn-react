@@ -1,0 +1,53 @@
+.users {
+  padding: 20px;
+}
+
+.usersList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding-top: 30px;
+}
+
+.user {
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  width: 50vh;
+
+  padding: 10px;
+
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.ava {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 5%;
+
+}
+
+.ava img {
+  border-radius: 50%;
+}
+
+.ava button {
+  padding: 5px 10px;
+
+  cursor: pointer;
+
+  color: white;
+
+  border-radius: 5px;
+  background-color: #007bff;
+}
