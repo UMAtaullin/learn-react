@@ -19,7 +19,7 @@ const App = (props) => {
               names={props.state.messagePage.namesData}
             />} />
           <Route path="/users/"
-            element={<UsersContainer/>}/>
+            element={<UsersContainer />}/>
         </Routes>
       </div>
     </div>
