@@ -1,5 +1,25 @@
 .users {
   padding: 20px;
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    text-align: center;
+
+    font-size: 22px;  
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  .activePage {
+    color: #007bff;
+
+    font-weight: bold;
+ }
 }
 
 .usersList {
