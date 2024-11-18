@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST'
 const CHANGE_POST = 'CHANGE_POST'
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
   postsData: [
@@ -7,7 +8,8 @@ let initialState = {
     { id: 2, text: 'I\'m a photographer.', like: '125' },
     { id: 3, text: 'I\'m always learning new things.', like: '185' },
   ],
-  printText: ''
+  printText: '',
+  profileData: null
 }
 
 const profileReducer = (state=initialState, action) => {
@@ -28,6 +30,8 @@ const profileReducer = (state=initialState, action) => {
       let stateCopy = { ...state }
       stateCopy.printText = action.printText;
       return stateCopy;
+    case SET_USER_PROFILE:
+      return { ...state, ...action.profileData }
     default:
       return state;
     }
@@ -37,5 +41,6 @@ export const addPostActionCreator = () => ({ type: ADD_POST })
 export const changePostActionCreator = (newText) => {
   return { type: CHANGE_POST, printText: newText };
 }
+export const setUserProfile = (profileData) => ({ type: SET_USER_PROFILE, profileData })
 
 export default profileReducer

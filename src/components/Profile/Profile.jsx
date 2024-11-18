@@ -7,9 +7,8 @@ const Profile = (props) => {
   // debugger
   return (
     <div className={cls.profile}>
-      <ProfileInfo />
+      <ProfileInfo profile={props.userProfile }/>
       <ProfilePostsContainer
-        // store={props.store} 
         />
     </div>
   );
