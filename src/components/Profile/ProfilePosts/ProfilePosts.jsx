@@ -3,7 +3,7 @@ import Post from './Post/Post';
 import cls from './ProfilePosts.module.css';
 
 const ProfilePosts = (props) => {
-
+  let refElement = React.createRef();
   let posts = props.posts.map((el) => (
     <Post key={el.id} text={el.text} like={el.like} />
   ));
@@ -12,9 +12,9 @@ const ProfilePosts = (props) => {
     props.addPost()
   }
 
-  const changePost = (event) =>{
-    let newText = event.target.value;
-    props.changePost(newText)
+  const changePost = () =>{
+    let newText = refElement.current.value;
+    props.dispatch(changePostActionCreator(newText))
   }
 
   return (
@@ -23,6 +23,7 @@ const ProfilePosts = (props) => {
       <div className={cls.row}>
         <textarea 
           placeholder="What's new?" 
+          ref={refElement} 
           onChange={changePost} 
           value={props.printText} />
         <button 

@@ -16,7 +16,7 @@ const App = (props) => {
               />} />
           <Route path="/messages/*"
             element={<Messenger
-              names={props.state.messagePage.namesData}
+              messengerPage={props.state.messengerPage}
             />} />
           <Route path="/users/"
             element={<UsersContainer />}/>
