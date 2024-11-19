@@ -31,7 +31,7 @@ let Users = (props) => {
             <div className={cls.user}>
               <NavLink to={'/profile/' + user.id} 
                 className={cls.ava}>
-                <img src={ava} alt="" />
+                <img src={user.photos.small != null ? user.photos.small : ava} alt="" />
               </NavLink>
 
               {user.followed ? (
