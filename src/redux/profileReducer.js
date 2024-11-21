@@ -20,18 +20,12 @@ const profileReducer = (state=initialState, action) => {
         text: state.printText,
         like: '0'
       }
-
-      let copyState = {...state}
-      copyState.postsData = [...state.postsData]
-      copyState.postsData.push(newPost);
-      copyState.printText = '';
-      return copyState;
+      state.postsData.push(newPost);
+      state.printText = '';
+      return state;
     case CHANGE_POST:
-      let stateCopy = { ...state }
-      stateCopy.printText = action.printText;
-      return stateCopy;
-    case SET_USER_PROFILE:
-      return { ...state, ...action.profileData }
+      state.printText = action.printText;
+      return state;
     default:
       return state;
     }

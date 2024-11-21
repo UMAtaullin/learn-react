@@ -3,7 +3,7 @@ import Post from './Post/Post';
 import cls from './ProfilePosts.module.css';
 
 const ProfilePosts = (props) => {
-  let refElement = React.createRef();
+  debugger
   let posts = props.posts.map((el) => (
     <Post key={el.id} text={el.text} like={el.like} />
   ));

@@ -1,46 +1,41 @@
+import React from 'react';
 import { addPostActionCreator, changePostActionCreator } from '../../../redux/profileReducer';
-// import React from 'react';
 import ProfilePosts from './ProfilePosts';
-// import StoreContext from '../../../StoreContext';
-import { connect } from 'react-redux';
+import StoreContext from '../../../StoreContext';
 
-// const ProfilePostsContainer = (props) => {
+const ProfilePostsContainer = (props) => {
 
-//   return (
-//     <StoreContext.Consumer>
-//       {
-//       (store) => {
-//         let state = store.getState()    
+  // let state = props.store.getState()    
 
-//         const addPost = () => store.dispatch(addPostActionCreator())
+  // const addPost = () => {
+  //   props.store.dispatch(addPostActionCreator())
+  // }
 
-//         const changePost = (text) =>{
-//           store.dispatch(changePostActionCreator(text))
-//         }
+  // const changePost = (text) =>{
+  //   props.store.dispatch(changePostActionCreator(text))
+  // }
 
-//         return <ProfilePosts
-//             addPost={addPost}
-//             changePost={changePost}
-//             posts={state.profilePage.postsData}
-//             printText={state.profilePage.printText}
-//           />}
-//         }
-//     </StoreContext.Consumer>
-//   );
-// };
+  return (
+    <StoreContext.Consumer>
+      {
+      (store) => {
+        let state = store.getState()    
 
+        const addPost = () => store.dispatch(addPostActionCreator())
 
-const mapStateToProps = (state) => ({
-  posts: state.profilePage.postsData,
-  printText: state.profilePage.printText,
-});
+        const changePost = (text) =>{
+          store.dispatch(changePostActionCreator(text))
+        }
 
-const mapDispatchToProps = (dispatch) => ({
-    addPost: () => dispatch(addPostActionCreator()),
-    changePost: (text) => dispatch(changePostActionCreator(text)),
-})
-
-// const _connect = connect(mapStateToProps, mapDispatchToProps)
-const ProfilePostsContainer = connect(mapStateToProps, mapDispatchToProps)(ProfilePosts);
+        return <ProfilePosts
+            addPost={addPost}
+            changePost={changePost}
+            posts={state.profilePage.postsData}
+            printText={state.profilePage.printText}
+          />}
+        }
+    </StoreContext.Consumer>
+  );
+};
 
 export default ProfilePostsContainer;
