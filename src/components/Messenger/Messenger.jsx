@@ -1,5 +1,5 @@
 import Dialogs from './Dialogs/Dialogs';
-import MessagesContainer from './Messages/MessagesContainer';
+import Messages from './Messages/Messages';
 import cls from './Messenger.module.css'
 
 const  Messenger = (props) => {

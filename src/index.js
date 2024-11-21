@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
-import { Provider } from './StoreContext';
+import { Provider } from 'react-redux';
+// import { Provider } from './StoreContext';
 
 
 let root;
@@ -18,9 +19,6 @@ export const rerenderTree = () => {
       <BrowserRouter>
         <Provider store={store}>
           <App
-            // store={store}
-            state={store.getState()}
-            // dispatch={store.dispatch.bind(store)} 
             />
         </Provider>
       </BrowserRouter>
