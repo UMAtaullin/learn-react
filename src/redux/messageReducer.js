@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD_MESSAGE'
+const SEND_MESSAGE = 'SEND_MESSAGE'
 const CHANGE_MESSAGE = 'CHANGE_MESSAGE'
 
 let initialState = {
@@ -20,19 +20,25 @@ let initialState = {
 }
 
 const messageReducer = (state=initialState, action) => {
+  let stateCopy = { 
+    ...state,
+    messagesData: [...state.messagesData]
+   };
+   debugger
+
   switch (action.type) {
-    case ADD_MESSAGE:
+    case SEND_MESSAGE:
       let newMessage = {
         id: state.messagesData.length + 1,
         message: state.printMessage,
         name: 'Name'
       };
-      state.messagesData.push(newMessage);
-      state.printMessage = '';
-      return state;
+      stateCopy.messagesData.push(newMessage);
+      stateCopy.printMessage = '';
+      return stateCopy;
     case CHANGE_MESSAGE:
-      state.printMessage = action.printMessage;
-      return state;
+      stateCopy.printMessage = action.printMessage;
+      return stateCopy;
     default:
       return state;
   }
@@ -42,6 +48,6 @@ const messageReducer = (state=initialState, action) => {
 export const changeMessageActionCreator = (newMessage) => {
   return { type: CHANGE_MESSAGE, printMessage: newMessage };
 }
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+export const addMessageActionCreator = () => ({ type: SEND_MESSAGE })
 
 export default messageReducer;

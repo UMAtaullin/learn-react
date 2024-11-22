@@ -7,9 +7,9 @@ const mapStateToProps = (state) => ({
   printText: state.profilePage.printText,
 });
 
-const mapDispatchToProps = ({
-  addPost: addPostActionCreator,
-  changePost: changePostActionCreator,
+const mapDispatchToProps = (dispatch) => ({
+  addPost: () => dispatch(addPostActionCreator()),
+  changePost: (text) => dispatch(changePostActionCreator(text)),
 });
 
 const ProfilePostsContainer = connect(mapStateToProps, mapDispatchToProps)(ProfilePosts)

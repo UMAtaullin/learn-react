@@ -1,7 +1,7 @@
 import cls from './Message.module.css'
 
 const Message =(props) =>{
-  debugger
+
   return (
     <div className={cls.message}>
       <div className={cls.title}>

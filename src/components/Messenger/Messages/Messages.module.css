@@ -1,3 +1,7 @@
+.messages {
+  padding: 20px;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -7,7 +11,7 @@
   padding-left: 20px;
 
   border-radius: 30px;
-  background: #edeef0;
+  background: #444;
 }
 
 textarea {

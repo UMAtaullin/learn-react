@@ -25,8 +25,10 @@ const ProfilePosts = (props) => {
           onChange={changePost}
           value={props.printText}
         />
-        <button className={cls.add} onClick={addPost}>
-          Add
+        <button 
+          className={cls.add} 
+          onClick={addPost}>
+            Add
         </button>
       </div>
       <div className={cls.posts}>{posts}</div>

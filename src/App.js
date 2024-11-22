@@ -1,4 +1,3 @@
-import Messenger from './components/Messenger/Messenger';
 import SideBar from './components/SideBar/SideBar';
 import { Routes, Route } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
@@ -12,7 +11,7 @@ const App = (props) => {
       <SideBar />
       <div className="main">
         <Routes>
-          <Route path="/profile/"
+          <Route path="/profile"
             element={<ProfileContainer
               />} />
           <Route path="/messages/*"
