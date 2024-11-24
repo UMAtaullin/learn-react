@@ -6,8 +6,8 @@ import usersReducer from './usersReducer'
 let reducers = combineReducers({
   profilePage: profileReducer,
   messagePage: messageReducer,
-  usersPage: usersReducer
-})
+  usersPage: usersReducer // usersPage обслуживается usersReducer
+}) 
 
 const store = createStore(reducers)
 

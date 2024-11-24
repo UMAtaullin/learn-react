@@ -1,62 +1,38 @@
-import React from 'react';
-import cls from './Users.module.css'
-import ava from '../static/img/user.jpeg'
-import { NavLink } from 'react-router-dom';
+// import ava from '../static/img/user.jpeg';
+import style from './Users.module.css'
 
 let Users = (props) => {
-
-  let pagesCount = props.totalUsers / props.pageSize;
-  let pages = [];
-  for (let i = 1; i <= Math.ceil(pagesCount); i++) {
-    pages.push(i);    
-  }  
-
+  debugger
   return (
-    <div className={cls.users}>
-      <div className={cls.pagination}>
-        {pages.map((page) => (
-          <span
-            onClick={() => {
-              props.onPageChanged(page);
-            }}
-            className={props.currentPage === page && cls.activePage}
-          >
-            {page}
-          </span>
-        ))}
-      </div>
-      {props.users.map((user) => (
-        <div key={user.id}>
-          <div className={cls.usersList}>
-            <div className={cls.user}>
-              <NavLink to={'/profile/' + user.id} 
-                className={cls.ava}>
-                <img src={user.photos.small != null ? user.photos.small : ava} alt="" />
-              </NavLink>
-
-              {user.followed ? (
-                <button onClick={() => props.unfollow(user.id)}>
-                  Unfollow
-                </button>
-              ) : (
-                <button onClick={() => props.follow(user.id)}>Follow</button>
-              )}
-            </div>
-            <div className={cls.info}>
-              <div>
-                <p>{user.name}</p>
-                <p>{user.status}</p>
+    <div>
+      <div className={style.users}>
+        {props.users.map((el) => (
+          <div key={el.id}>
+            <div className={style.row}>
+              <div className={style.ava}>
+                <img className={style.image} src={el.ava} alt="" />
+                {el.followed 
+                  ? <button className={style.btn} onClick={() => 
+                    {props.unfollow(el.id)}}>Unfollow</button>
+                  : <button className={style.btn} onClick={() => 
+                    {props.follow(el.id)}}>Follow</button>}
               </div>
-              <div>
-                <p>{'user.location.country'}</p>
-                <p>{'user.location.city'}</p>
+              <div className={style.info}>
+                <div>
+                  <p>{el.name}</p>
+                  <p>{el.status}</p>
+                </div>
+                <div>
+                  <p>{'el.location.country'}</p>
+                  <p>{'el.location.city'}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
-}
- 
+};
+
 export default Users;

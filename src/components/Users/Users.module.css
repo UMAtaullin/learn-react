@@ -1,32 +1,29 @@
 .users {
   padding: 20px;
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-
-    text-align: center;
-
-    font-size: 22px;
-
-    span {
-      cursor: pointer;
-    }
-  }
-
-  .activePage {
-    color: #007bff;
-
-    font-weight: bold;
-  }
 }
 
-.usersList {
+.row {
   display: flex;
   gap: 10px;
 
-  padding-top: 30px;
+  padding: 10px;
+}
+
+.ava {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+
+  .btn {
+    padding: 0 10px;
+
+    cursor: pointer;
+
+    color: white;
+
+    border-radius: 5px;
+    background-color: #007bff;
+  }
 }
 
 .info {
@@ -40,27 +37,4 @@
 
   border: 1px solid #000;
   border-radius: 5px;
-}
-
-.user {
-  display: flex;
-  flex-direction: column;
-}
-
-.user button {
-  padding: 5px 10px;
-
-  cursor: pointer;
-
-  color: white;
-
-  border-radius: 5px;
-  background-color: #007bff;
-}
-
-.user img {
-  width: 70px;
-  height: 70px;
-
-  border-radius: 50%;
 }
