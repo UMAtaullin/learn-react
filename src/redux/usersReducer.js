@@ -6,30 +6,7 @@ const SET_USERS = 'SET_USERS'
 
 let initialState = {
   users: [
-        {
-      id: 1,
-      ava: 'https://imgcdn.stablediffusionweb.com/2024/5/20/a323743b-d287-4aff-bf1f-7923374b39a0.jpg',
-      followed: true,
-      name: 'Elon Musk',
-      status: 'I am explorer',
-      location: { country: 'USA', city: 'San Francisco' },
-    },
-    {
-      id: 2,
-      ava: 'https://scientificrussia.ru/images/n/3arn-large.jpg',
-      followed: true,
-      name: 'Yuri Gagarin',
-      status: 'I am a cosmonaut',
-      location: { country: 'Russia', city: 'Moscow' },
-    },
-    {
-      id: 3,
-      ava: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/800px-Donald_Trump_official_portrait.jpg',
-      followed: false,
-      name: 'Donald Trump',
-      status: 'I am a politician',
-      location: { country: 'USA', city: 'Washington' },
-    },
+
   ],
 }
 

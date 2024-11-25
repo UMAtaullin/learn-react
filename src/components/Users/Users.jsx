@@ -1,21 +1,48 @@
-// import ava from '../static/img/user.jpeg';
-import style from './Users.module.css'
+import React  from 'react';
+import ava from '../static/img/user.jpeg';
+import axios from 'axios';
+import style from './Users.module.css';
 
-let Users = (props) => {
-  debugger
-  return (
-    <div>
+class Users extends React.Component {
+  getUsers = () => {
+    if (this.props.users.length === 0) {
+     axios
+       .get('https://social-network.samuraijs.com/api/1.0/users')
+       .then((response) => this.props.getUsers(response.data.items)); 
+    }
+  }
+  render() {
+    return (
       <div className={style.users}>
-        {props.users.map((el) => (
+        <button onClick={this.getUsers}>Get Users</button>
+        {this.props.users.map((el) => (
           <div key={el.id}>
             <div className={style.row}>
               <div className={style.ava}>
-                <img className={style.image} src={el.ava} alt="" />
-                {el.followed 
-                  ? <button className={style.btn} onClick={() => 
-                    {props.unfollow(el.id)}}>Unfollow</button>
-                  : <button className={style.btn} onClick={() => 
-                    {props.follow(el.id)}}>Follow</button>}
+                <img
+                  className={style.image}
+                  src={el.photos.small != null ? el.photos.small : ava}
+                  alt=""
+                />
+                {el.followed ? (
+                  <button
+                    className={style.btn}
+                    onClick={() => {
+                      this.props.unfollow(el.id);
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    className={style.btn}
+                    onClick={() => {
+                      this.props.follow(el.id);
+                    }}
+                  >
+                    Follow
+                  </button>
+                )}
               </div>
               <div className={style.info}>
                 <div>
@@ -31,8 +58,8 @@ let Users = (props) => {
           </div>
         ))}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default Users;
+export default Users
