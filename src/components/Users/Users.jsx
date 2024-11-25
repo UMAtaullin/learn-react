@@ -4,17 +4,15 @@ import axios from 'axios';
 import style from './Users.module.css';
 
 class Users extends React.Component {
-  getUsers = () => {
-    if (this.props.users.length === 0) {
-     axios
-       .get('https://social-network.samuraijs.com/api/1.0/users')
-       .then((response) => this.props.getUsers(response.data.items)); 
-    }
+  componentDidMount() {
+    axios
+      .get('https://social-network.samuraijs.com/api/1.0/users')
+      .then((response) => this.props.getUsers(response.data.items)); 
   }
+
   render() {
     return (
       <div className={style.users}>
-        <button onClick={this.getUsers}>Get Users</button>
         {this.props.users.map((el) => (
           <div key={el.id}>
             <div className={style.row}>
