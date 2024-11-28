@@ -11,6 +11,6 @@ let reducers = combineReducers({
 
 const store = createStore(reducers)
 
-window.store = store
+window.store = store // в любой момент времени изучить store
 
 export default store

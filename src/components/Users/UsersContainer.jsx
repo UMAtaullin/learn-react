@@ -32,7 +32,6 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    debugger
 
     return (
       <>

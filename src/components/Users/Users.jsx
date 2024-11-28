@@ -1,9 +1,10 @@
 import React  from 'react';
 import ava from '../static/img/user.jpeg';
 import style from './Users.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Users = (props) => {
-  debugger
+  // debugger
   let pagesCount = props.totalCount / props.pageSize;
   let pages = [];
   for (let i = 1; i <= Math.ceil(pagesCount); i++) {
@@ -28,31 +29,33 @@ const Users = (props) => {
       {props.users.map((el) => (
         <div key={el.id}>
           <div className={style.row}>
-            <div className={style.ava}>
-              <img
-                className={style.image}
-                src={el.photos.small != null ? el.photos.small : ava}
-                alt=""
-              />
-              {el.followed ? (
-                <button
-                  className={style.btn}
-                  onClick={() => {
-                    props.unfollow(el.id);
-                  }}
-                >
-                  Unfollow
-                </button>
-              ) : (
-                <button
-                  className={style.btn}
-                  onClick={() => {
-                    props.follow(el.id);
-                  }}
-                >
-                  Follow
-                </button>
-              )}
+            <div className={style.column}>
+              <NavLink to="/profile" className={style.ava}>
+                <img
+                  className={style.image}
+                  src={el.photos.small != null ? el.photos.small : ava}
+                  alt=""
+                />
+              </NavLink>
+              <div className={style.btn}>
+                {el.followed ? (
+                  <button
+                    onClick={() => {
+                      props.unfollow(el.id);
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      props.follow(el.id);
+                    }}
+                  >
+                    Follow
+                  </button>
+                )}
+              </div>
             </div>
             <div className={style.info}>
               <div>

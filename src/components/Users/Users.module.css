@@ -6,7 +6,6 @@
   display: flex;
   gap: 10px;
 
-  padding: 0 10px 0 0;
   margin-top: 10px;
 }
 
@@ -15,7 +14,12 @@
   flex-direction: column;
   width: 90px;
 
-  .btn {
+}
+
+.btn {
+  button {
+    width: 90px;
+
     padding: 0 10px 0 0;
 
     cursor: pointer;
