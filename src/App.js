@@ -11,7 +11,7 @@ const App = (props) => {
       <SideBar />
       <div className="main">
         <Routes>
-          <Route path="/profile"
+          <Route path="profile/:userId?"
             element={<ProfileContainer
               />} />
           <Route path="/messages/*"

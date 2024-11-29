@@ -30,7 +30,7 @@ const Users = (props) => {
         <div key={el.id}>
           <div className={style.row}>
             <div className={style.column}>
-              <NavLink to="/profile" className={style.ava}>
+              <NavLink to={"/profile/" + el.id} className={style.ava}>
                 <img
                   className={style.image}
                   src={el.photos.small != null ? el.photos.small : ava}

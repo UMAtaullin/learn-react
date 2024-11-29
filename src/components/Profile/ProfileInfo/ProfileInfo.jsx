@@ -10,12 +10,14 @@ const ProfileInfo = (props) => {
   return (
     <div className={cls.profile}>
       <div className={cls.ava}>
-        <img src={props.profile.photos.large} alt="" />
-
-        {/* <img
-          src="https://avatars.dzeninfra.ru/get-zen_doc/9759668/pub_645cec1a20e1c7242b32db52_6460ad5c6edf700dfdf05e3a/scale_1200"
-          alt=""
-        /> */}
+        <img
+          src={
+            props.profile.photos.large != null
+              ? props.profile.photos.large
+              : 'https://avatars.dzeninfra.ru/get-zen_doc/9759668/pub_645cec1a20e1c7242b32db52_6460ad5c6edf700dfdf05e3a/scale_1200'
+          }
+          alt="Здесь должно было быть фото профиля"
+        />
       </div>
       <div className={cls.description}>
         <p className={cls.name}>

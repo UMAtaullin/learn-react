@@ -54,7 +54,7 @@ let mapStateToProps = (state) => ({
   pageSize: state.usersPage.pageSize,
   totalCount: state.usersPage.totalCount,
   currentPage: state.usersPage.currentPage,
-  isFetching: state.usersPage.isFetching
+  isFetching: state.usersPage.isFetching,
 })
 
 let mapDispatchToProps = (dispatch) => ({
