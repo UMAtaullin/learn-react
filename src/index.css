@@ -29,4 +29,6 @@ html {
   color: var(--text-clr);
   background-color: var(--base-clr);
   grid-template-columns: auto 1fr;
+  grid-template-areas: "n h h" "n c c" "n c c";
 }
+

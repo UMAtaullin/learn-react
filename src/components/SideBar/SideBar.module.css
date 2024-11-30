@@ -1,4 +1,5 @@
 .sidebar {
+  grid-area: n;
   position: sticky;
   top: 0;
 
