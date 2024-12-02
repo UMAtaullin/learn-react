@@ -3,7 +3,7 @@ import Messages from './Messages/Messages';
 import cls from './Messenger.module.css'
 
 const  Messenger = (props) => {
-  debugger
+
   return (
     <div className={cls.messengerPage}>
       <Dialogs names={props.messengerPage.namesData} />
