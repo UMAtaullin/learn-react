@@ -3,6 +3,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const DISABLED_BUTTON = 'DISABLED_BUTTON'
 
 let initialState = {
   users: [],
@@ -10,6 +11,7 @@ let initialState = {
   totalCount: 77,
   currentPage: 1,
   isFetching: false,
+  disabledButton: false,
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -48,6 +50,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.isFetching
       }
+    case DISABLED_BUTTON:
+      return {
+        ...state,
+        disabledButton: action.isDisabling
+      }
     default:
       return state;
   }
@@ -58,5 +65,6 @@ export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const setDisabledButton = (isDisabling) => ({ type: DISABLED_BUTTON, isDisabling})
 
 export default usersReducer

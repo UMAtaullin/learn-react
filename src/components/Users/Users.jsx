@@ -18,8 +18,10 @@ const Users = (props) => {
         {pages.map((page) => {
           return (
             <span
-            className={props.currentPage === page ? style.activePage : null}
-              onClick={() => {props.onPageChange(page)}}
+              className={props.currentPage === page ? style.activePage : null}
+              onClick={() => {
+                props.onPageChange(page);
+              }}
             >
               {page}
             </span>
@@ -31,7 +33,7 @@ const Users = (props) => {
         <div key={el.id}>
           <div className={style.row}>
             <div className={style.column}>
-              <NavLink to={"/profile/" + el.id} className={style.ava}>
+              <NavLink to={'/profile/' + el.id} className={style.ava}>
                 <img
                   className={style.image}
                   src={el.photos.small != null ? el.photos.small : ava}
@@ -39,21 +41,36 @@ const Users = (props) => {
                 />
               </NavLink>
               <div className={style.btn}>
-                {el.followed 
-                  ? (<button onClick={() => {
-                    unfollow(el.id).then((response) => {
+                {el.followed ? (
+                  <button
+                    disabled={props.disabledButton}
+                    onClick={() => {
+                      props.setDisabledButton(true);
+                      unfollow(el.id).then((response) => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(el.id);
                         }
+                        props.setDisabledButton(false);
                       });
-                    }}>Unfollow</button>
-                ) : (<button onClick={() => {
-                  follow(el.id).then((response) => {
-                      if (response.data.resultCode === 0) {
-                        props.follow(el.id);
-                      }
-                    });
-                  }}>Follow</button>
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    disabled={props.disabledButton}
+                    onClick={() => {
+                      props.setDisabledButton(true);
+                      follow(el.id).then((response) => {
+                        if (response.data.resultCode === 0) {
+                          props.follow(el.id);
+                        }
+                        props.setDisabledButton(false);
+                      });
+                    }}
+                  >
+                    Follow
+                  </button>
                 )}
               </div>
             </div>
