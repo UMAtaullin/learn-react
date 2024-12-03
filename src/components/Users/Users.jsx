@@ -43,29 +43,33 @@ const Users = (props) => {
               <div className={style.btn}>
                 {el.followed ? (
                   <button
-                    disabled={props.disabledButton}
+                    disabled={props.disabledButton.some(
+                      id => id === el.id
+                    )}
                     onClick={() => {
-                      props.setDisabledButton(true);
+                      props.setDisabledButton(true, el.id);
                       unfollow(el.id).then((response) => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(el.id);
                         }
-                        props.setDisabledButton(false);
+                        props.setDisabledButton(false, el.id);
                       });
                     }}
                   >
                     Unfollow
                   </button>
-                ) : (
+                  ) : (
                   <button
-                    disabled={props.disabledButton}
+                    disabled={props.disabledButton.some(
+                      id => id === el.id
+                    )}
                     onClick={() => {
-                      props.setDisabledButton(true);
+                      props.setDisabledButton(true, el.id);
                       follow(el.id).then((response) => {
                         if (response.data.resultCode === 0) {
                           props.follow(el.id);
                         }
-                        props.setDisabledButton(false);
+                        props.setDisabledButton(false, el.id);
                       });
                     }}
                   >
