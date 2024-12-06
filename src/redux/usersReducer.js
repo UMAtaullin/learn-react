@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api'
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -11,7 +13,7 @@ let initialState = {
   totalCount: 77,
   currentPage: 1,
   isFetching: false,
-  disabledButton: [31933, 31934],
+  disabledButton: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -69,4 +71,41 @@ export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, curr
 export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const setDisabledButton = (isDisabling, userId) => ({ type: DISABLED_BUTTON, isDisabling, userId})
 
-export default usersReducer
+
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(toggleIsFetchingAC(true))
+    usersAPI.getUsers(currentPage, pageSize)
+      .then((response) => {
+        dispatch(toggleIsFetchingAC(false))
+        dispatch(setUsersAC(response.data.items))
+      })
+  }
+}
+
+export const followThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(setDisabledButton(true, userId));
+    usersAPI.follow(userId).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(followAC(userId));
+      }
+      dispatch(setDisabledButton(false, userId));
+    });
+  }
+}
+
+export const unfollowThunkCreator = (userId) => {
+  return (dispatch) => {
+    dispatch(setDisabledButton(true, userId));
+    usersAPI.unfollow(userId).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(unfollowAC(userId));
+      }
+      dispatch(setDisabledButton(false, userId));
+    });
+  }
+}
+
+export default usersReducer 

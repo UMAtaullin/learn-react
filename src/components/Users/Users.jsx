@@ -2,7 +2,7 @@ import React  from 'react';
 import ava from '../static/img/user.jpeg';
 import style from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import { follow, unfollow } from '../../api/api';
+import { followThunkCreator, unfollowThunkCreator } from '../../redux/usersReducer';
 
 const Users = (props) => {
   // debugger
@@ -41,40 +41,14 @@ const Users = (props) => {
                 />
               </NavLink>
               <div className={style.btn}>
-                {el.followed ? (
-                  <button
-                    disabled={props.disabledButton.some(
-                      id => id === el.id
-                    )}
-                    onClick={() => {
-                      props.setDisabledButton(true, el.id);
-                      unfollow(el.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.unfollow(el.id);
-                        }
-                        props.setDisabledButton(false, el.id);
-                      });
-                    }}
-                  >
-                    Unfollow
-                  </button>
-                  ) : (
-                  <button
-                    disabled={props.disabledButton.some(
-                      id => id === el.id
-                    )}
-                    onClick={() => {
-                      props.setDisabledButton(true, el.id);
-                      follow(el.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.follow(el.id);
-                        }
-                        props.setDisabledButton(false, el.id);
-                      });
-                    }}
-                  >
-                    Follow
-                  </button>
+                {el.followed ? (<button
+                    disabled={props.disabledButton.some(id => id === el.id)}
+                    onClick={() => {unfollowThunkCreator(el.id)}}
+                  >Unfollow</button>
+                  ) : (<button
+                    disabled={props.disabledButton.some(id => id === el.id)}
+                    onClick={() => {followThunkCreator(el.id)}}
+                  >Follow</button>
                 )}
               </div>
             </div>

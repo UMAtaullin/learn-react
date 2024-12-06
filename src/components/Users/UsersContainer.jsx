@@ -2,26 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users'
 import Preloader from '../common/Preloader/Preloader'
-import { followAC, setCurrentPageAC, setDisabledButton, setUsersAC, toggleIsFetchingAC, unfollowAC } from '../../redux/usersReducer';
-import { getUsers } from '../../api/api';
-
+import { followAC, getUsersThunkCreator, setCurrentPageAC, setDisabledButton, unfollowAC } from '../../redux/usersReducer';
+ 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    getUsers(this.props.currentPage, this.props.pageSize)
-      .then((response) => {
-        this.props.toggleIsFetching(false);
-        this.props.getUsers(response.data.items);
-      })
+    this.props.getUsersThunkCreator(
+      this.props.currentPage, this.props.pageSize)
+    // this.props.toggleIsFetching(true);
+    // getUsers(this.props.currentPage, this.props.pageSize)
+    //   .then((response) => {
+    //     this.props.toggleIsFetching(false);
+    //     this.props.getUsers(response.data.items);
+    //   })
   }
 
   onPageChange = (page) => {
     this.props.getCurrentPage(page);
-    this.props.toggleIsFetching(true);
-    getUsers(page, this.props.pageSize)
-      .then((response) => {
-        this.props.toggleIsFetching(false);
-        this.props.getUsers(response.data.items)});
+    this.props.getUsersThunkCreator(page, this.props.pageSize);
   };
 
   render() {
@@ -38,7 +35,7 @@ class UsersContainer extends React.Component {
           follow={this.props.follow}
           unfollow={this.props.unfollow}
           disabledButton={this.props.disabledButton}
-          setDisabledButton={this.props.setDisabledButton}
+          // setDisabledButton={this.props.setDisabledButton}
         />
       </>
     );
@@ -57,10 +54,13 @@ let mapStateToProps = (state) => ({
 let mapDispatchToProps = (dispatch) => ({
   follow: (userId) => dispatch(followAC(userId)),
   unfollow: (userId) => dispatch(unfollowAC(userId)),
-  getUsers: (users) => dispatch(setUsersAC(users)),
+  // getUsers: (users) => dispatch(setUsersAC(users)),
   getCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-  toggleIsFetching: (isFetching) => dispatch(toggleIsFetchingAC(isFetching)),
+  // toggleIsFetching: (isFetching) => dispatch(toggleIsFetchingAC(isFetching)),
   setDisabledButton: (isDisabling) => dispatch(setDisabledButton(isDisabling)),
+  getUsersThunkCreator: (currentPage, pageSize) => {
+    dispatch(getUsersThunkCreator(currentPage, pageSize))
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)

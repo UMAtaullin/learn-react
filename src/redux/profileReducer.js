@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api'
+
 const ADD_POST = 'ADD_POST'
 const CHANGE_POST = 'CHANGE_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -44,6 +46,13 @@ export const changePostActionCreator = (newText) => {
   return { type: CHANGE_POST, printText: newText };
 }
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
+
+export const getUserProfile = (userId) => (dispatch) => {
+  if (!userId) userId = 31852;
+  usersAPI.getProfile(userId).then(response => {
+    dispatch(setUserProfile(response.data));
+  })
+}
 
 export default profileReducer
 
