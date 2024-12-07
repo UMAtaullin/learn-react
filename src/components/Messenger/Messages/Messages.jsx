@@ -17,6 +17,7 @@ const Messages = (props) => {
     props.sentMessage();
   };
 
+
   return (
     <div className={cls.messages}>
       {messages}
