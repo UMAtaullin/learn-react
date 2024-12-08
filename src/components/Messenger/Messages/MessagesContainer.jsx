@@ -1,3 +1,4 @@
+import { compose } from 'redux';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
 import Messages from './Messages';
@@ -21,16 +22,15 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Messages);
+// let AuthRedirectComponent = withAuthRedirect(Messages);
 
-// let AuthRedirectComponent = (props) => {
-//   if (!props.isAuth) return <Navigate to={'/login/'} />;
-//   return <Messages {...props} />;
-// };
-
-const MessagesContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AuthRedirectComponent);
+// const MessagesContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(AuthRedirectComponent);
   
-export default MessagesContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect,
+
+)(Messages);
