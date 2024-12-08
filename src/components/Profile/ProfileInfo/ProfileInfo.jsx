@@ -1,5 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
 import cls from './ProfileInfo.module.css';
+import Status from './Status/Status'
 
 const ProfileInfo = (props) => {
   // debugger
@@ -9,6 +10,7 @@ const ProfileInfo = (props) => {
 
   return (
     <div className={cls.profile}>
+      <Status status={'hi there'} />
       <div className={cls.ava}>
         <img
           src={
