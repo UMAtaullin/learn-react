@@ -10,7 +10,9 @@ const ProfileInfo = (props) => {
 
   return (
     <div className={cls.profile}>
-      <Status status={'hi there'} />
+      <Status 
+        status={props.status} 
+        updateStatus={props.updateStatus} />
       <div className={cls.ava}>
         <img
           src={

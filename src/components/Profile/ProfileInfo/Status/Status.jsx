@@ -3,7 +3,8 @@ import cls from '../ProfileInfo.module.css';
 
 class Status extends React.Component {
   state = {
-    editStatus: false,
+    editStatus: false,   
+    status: this.props.status   
   };
 
   activateEditStatus = () => {
@@ -15,6 +16,10 @@ class Status extends React.Component {
     this.setState ({
       editStatus: false
     })
+    this.props.updateStatus(this.state.status)
+  }
+  onStatusChange = (event) => {
+    this.setState({status: event.currentTarget.value})
   }
 
   render() {
@@ -23,15 +28,16 @@ class Status extends React.Component {
         {!this.state.editStatus ? (
           <div>
             <span onDoubleClick={this.activateEditStatus}>
-              {this.props.status}
+              {this.props.status || 'My status'}
             </span>
           </div>
         ) : (
           <div>
             <input
+              onChange={this.onStatusChange}
               onBlur={this.deactivateEditStatus}
               autoFocus={true}
-              value={this.props.status}
+              value={this.state.status}
             />
           </div>
         )}
