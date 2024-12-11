@@ -25,7 +25,7 @@ const SideBar = () => {
           </button>
         </li>
         <li className={cls.active}>
-          <NavLink to="profile">
+          <NavLink to="/profile">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"

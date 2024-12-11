@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import style from './Login.module.css'; 
 
-const Login = (props) => {
-  debugger
+const Login = () => {
   const {
     register,
     handleSubmit,
@@ -36,7 +36,9 @@ const Login = (props) => {
             })}
             placeholder="e-mail"
           />
-          {errors.email && <div>{errors.email.message}</div>}
+          {errors.email && (
+            <div className="error-message">{errors.email.message}</div>
+          )}
         </div>
 
         <div>
@@ -45,7 +47,9 @@ const Login = (props) => {
             {...register('password', { required: 'Required' })}
             placeholder="password"
           />
-          {errors.password && <div>{errors.password.message}</div>}
+          {errors.password && (
+            <div className="error-message">{errors.password.message}</div>
+          )}
         </div>
 
         <div>
@@ -53,7 +57,7 @@ const Login = (props) => {
           <label htmlFor="rememberMe"> remember me </label>
         </div>
 
-        <button type="submit">Log in</button>
+        <button className={style.btn} type="submit">Log in</button>
       </form>
     </div>
   );
