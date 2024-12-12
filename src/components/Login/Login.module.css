@@ -26,11 +26,11 @@ input[type="checkbox"] {
   /* Отступ между чекбоксом и текстом */
 }
 
-label {
+.checkbox {
   color: #000;
 }
 
-.btn {
+button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -40,7 +40,7 @@ label {
   width: 100%;
 }
 
-.btn:hover {
+button:hover {
   background-color: #0056b3;
 }
 
