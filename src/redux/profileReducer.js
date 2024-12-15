@@ -12,7 +12,6 @@ let initialState = {
     { id: 2, text: 'I\'m a photographer.', like: '125' },
     { id: 3, text: 'I\'m always learning new things.', like: '185' },
   ],
-  // printText: '',
   profile: null,
   status: ''
 }
@@ -20,20 +19,15 @@ let initialState = {
 const profileReducer = (state=initialState, action) => {
   switch (action.type) {
     case ADD_POST:
+      let newPost = {
+        id: state.postsData.length + 1,
+        text: action.printText,
+        like: '0'
+      }
       return {
         ...state,
-        postsData: [ {
-          id: state.postsData.length + 1,
-          text: action.printText,
-          like: '0'
-        }],
-        // printText: ''
+        postsData: [ ...state.postsData, newPost],
       };
-    // case CHANGE_POST:
-    //   return {
-    //     ...state,
-    //     printText: action.printText,
-    //   };
     case SET_USER_PROFILE:
       return {
         ...state,
