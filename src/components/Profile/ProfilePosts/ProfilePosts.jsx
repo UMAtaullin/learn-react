@@ -2,6 +2,7 @@ import React from 'react';
 import Post from './Post/Post';
 import cls from './ProfilePosts.module.css';
 import { useForm } from 'react-hook-form';
+import { maxLength, requiredField } from '../../utils/validators';
 
 const ProfilePosts = (props) => {
   // debugger
@@ -30,10 +31,18 @@ const AddPostForm = ({ onSubmit, register }) => {
   return (
     <div className={cls.row}>
       <form onSubmit={onSubmit}>
-        <textarea 
-          {...register('printText', { required: true })} 
+        <textarea
+          {...register('printText', {
+            required: true,
+            validate: {
+              requiredField,
+              maxLength: maxLength(20) || 'Max length 30',
+            },
+          })}
         />
-        <button type="submit" className={cls.add}>Add</button>
+        <button type="submit" className={cls.add}>
+          Add
+        </button>
       </form>
     </div>
   );

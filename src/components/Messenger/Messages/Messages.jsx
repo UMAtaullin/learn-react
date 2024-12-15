@@ -1,3 +1,4 @@
+import { requiredField } from '../../utils/validators';
 import Message from './Message/Message';
 import cls from './Messages.module.css';
 import React from 'react';
@@ -17,7 +18,7 @@ const Messages = (props) => {
   // const sentMessage = () => {
   //   props.sentMessage();
   // };
-  
+ 
   const addNewMessage = (values) => {
     // alert(values.printMessage)
     props.sendMessage(values.printMessage);
@@ -37,7 +38,10 @@ const AddMessageForm = (props) => {
     <form 
       onSubmit={props.handleSubmit}
       className={cls.row}>
-        <Field component='textarea' name='printMessage' />
+        <Field 
+          component='textarea' 
+          name='printMessage' 
+          validate={requiredField}/>
       <button>Send</button>
     </form>
   );
