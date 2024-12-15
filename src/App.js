@@ -17,7 +17,7 @@ const App = (props) => {
           <Route path="profile/:userId?"
             element={<ProfileContainer
               />} />
-          <Route path="/messages/*"
+          <Route path="/messages/"
             element={<MessagesContainer
             />} />
           <Route path="/users/"

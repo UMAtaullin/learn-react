@@ -1,6 +1,6 @@
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
-import { addMessageActionCreator, changeMessageActionCreator } from '../../../redux/messageReducer';
+import { addMessageActionCreator } from '../../../redux/messageReducer';
 import Messages from './Messages';
 import { connect } from 'react-redux';
 
@@ -15,11 +15,13 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    changeMessage: (newMessage) => {
-           dispatch(changeMessageActionCreator(newMessage))},
-    sentMessage: () => {
-          dispatch(addMessageActionCreator())},
-  }
+    // changeMessage: (newMessage) => {
+    //   dispatch(changeMessageActionCreator(newMessage));
+    // },
+    sendMessage: (printMessage) => {
+      dispatch(addMessageActionCreator(printMessage));
+    },
+  };
 }
 
 // let AuthRedirectComponent = withAuthRedirect(Messages);

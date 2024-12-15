@@ -1,5 +1,5 @@
 const SEND_MESSAGE = 'SEND_MESSAGE'
-const CHANGE_MESSAGE = 'CHANGE_MESSAGE'
+// const CHANGE_MESSAGE = 'CHANGE_MESSAGE'
 
 let initialState = {
   namesData: [
@@ -16,7 +16,7 @@ let initialState = {
     { id: 5, message: 'I\'m working on a new smartphone.', name: 'Elon' },
     { id: 6, message: 'I\'m excited about it.', name: 'Elon' },
   ],
-  printMessage: ''
+  // printMessage: ''
 }
 
 const messageReducer = (state=initialState, action) => {
@@ -27,25 +27,25 @@ const messageReducer = (state=initialState, action) => {
         ...state,
         messagesData: [...state.messagesData, {
           id: state.messagesData.length + 1,
-          message: state.printMessage,
+          message: action.printMessage,
           name: 'Name'
         }],
-        printMessage: ''
+        // printMessage: ''
       };
-    case CHANGE_MESSAGE:
-      return {
-        ...state,
-        printMessage: action.printMessage,
-      };
+    // case CHANGE_MESSAGE:
+    //   return {
+    //     ...state,
+    //     printMessage: action.printMessage,
+    //   };
     default:
       return state;
   }
 }
 
 
-export const changeMessageActionCreator = (newMessage) => {
-  return { type: CHANGE_MESSAGE, printMessage: newMessage };
-}
-export const addMessageActionCreator = () => ({ type: SEND_MESSAGE })
+// export const changeMessageActionCreator = (newMessage) => {
+//   return { type: CHANGE_MESSAGE, printMessage: newMessage };
+// }
+export const addMessageActionCreator = (printMessage) => ({ type: SEND_MESSAGE, printMessage })
 
 export default messageReducer;
