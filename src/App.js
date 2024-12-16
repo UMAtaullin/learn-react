@@ -5,29 +5,41 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messenger/Messages/MessagesContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
+import { Component } from 'react';
+import { getUsersThunkCreator } from './redux/authReducer';
+import { connect } from 'react-redux';
 
-const App = (props) => {
-  // debugger
-  return (
-    <div className="app">
-      <HeaderContainer />
-      <SideBar />
-      <div className="main">
-        <Routes>
-          <Route path="profile/:userId?"
-            element={<ProfileContainer
+class App extends Component {
+  componentDidMount() {
+    this.props.getUsersThunkCreator();
+  }
+
+  render() {
+    
+    return (
+      <div className="app">
+        <HeaderContainer />
+        <SideBar />
+        <div className="main">
+          <Routes>
+            <Route path="profile/:userId?"
+              element={<ProfileContainer
+                />} />
+            <Route path="/messages/"
+              element={<MessagesContainer
               />} />
-          <Route path="/messages/"
-            element={<MessagesContainer
-            />} />
-          <Route path="/users/"
-            element={<UsersContainer />}/>
-          <Route path="/login/"
-            element={<Login />}/>
-        </Routes>
+            <Route path="/users/"
+              element={<UsersContainer />}/>
+            <Route path="/login/"
+              element={<Login />}/>
+          </Routes>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default App;
+export default connect(
+  null,
+  { getUsersThunkCreator})
+  (App)
