@@ -3,15 +3,19 @@ import { login } from '../../redux/authReducer';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import style from './Login.module.css'
+import { Navigate } from 'react-router-dom';
 
 
 const Login = (props) => {
-  debugger
 
   const {register, handleSubmit } = useForm()
 
   const onSubmit = (args) => {
     props.login(args.email, args.password)
+  }
+
+  if (props.isAuth) {
+    return <Navigate to="/profile" />;
   }
 
   return (
@@ -40,4 +44,13 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(
+  mapStateToProps, 
+  { login })
+  (Login);
+
+// export default compose(
+//   connect(mapStateToProps, mapDispatchToProps),
+//   withAuthRedirect,
+
+// )(Messages);
