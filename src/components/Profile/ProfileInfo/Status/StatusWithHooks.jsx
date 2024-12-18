@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cls from '../ProfileInfo.module.css';
 
 const StatusWithHooks = (props) => {
@@ -16,13 +16,17 @@ const StatusWithHooks = (props) => {
   let [editStatus, setEditStatus] = useState(false);
   let [status, setStatus] = useState(props.status);
 
+  useEffect(() => {
+    setStatus(props.status)
+  }, [props.status])
+
   // activateEditStatus = () => {
   //   this.setState({
   //     editStatus: true,
   //   });
   // };
 
-  let activateStatus = () => {
+  const activateStatus = () => {
     setEditStatus(true);
   }
   // deactivateEditStatus = () => {
@@ -31,7 +35,7 @@ const StatusWithHooks = (props) => {
   //   });
   //   this.props.updateStatus(this.state.status);
   // };
-  let deactivateStatus = () => {
+  const deactivateStatus = () => {
     setEditStatus(false)
     props.updateStatus(status)
   }
