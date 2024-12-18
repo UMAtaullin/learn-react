@@ -1,6 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
 import cls from './ProfileInfo.module.css';
-import Status from './Status/Status'
+import StatusWithHooks from './Status/StatusWithHooks';
 
 const ProfileInfo = (props) => {
   // debugger
@@ -10,7 +10,7 @@ const ProfileInfo = (props) => {
 
   return (
     <div className={cls.profile}>
-      <Status 
+      <StatusWithHooks 
         status={props.status} 
         updateStatus={props.updateStatus} />
       <div className={cls.ava}>
