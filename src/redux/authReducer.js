@@ -1,6 +1,6 @@
 import { authAPI } from '../api/api'
 
-const SET_USER_DATA = 'SET_USER_DATA'
+const SET_USER_DATA = 'ural/auth/SET_USER_DATA'
 
 let initialState = {
   userId: null,
@@ -23,29 +23,27 @@ const authReducer = (state=initialState, action) => {
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, data: { userId, login, email, isAuth }})
 
-export const getUsersThunkCreator = () => (dispatch) => {
-  authAPI.getMe().then((response) => {
+export const getUsersThunkCreator = () => 
+  async (dispatch) => {
+    const response = await authAPI.getMe()
     if (response.data.resultCode === 0) {
       let { id, email, login } = response.data.data;
       dispatch(setAuthUserData(id, email, login, true))
-    }
-  });
+    };
 }
 
-export const login = (email, password, isAuth) => (dispatch) => {
-  authAPI.login(email, password, isAuth)
-    .then((response) => {
+export const login = (email, password, isAuth) => 
+  async (dispatch) => {
+    const response = await authAPI.login(email, password, isAuth)
     if (response.data.resultCode === 0) {
       dispatch(getUsersThunkCreator())
     }
-  });
 }
-export const logout = () => (dispatch) => {
-  authAPI.logout().then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch) => {
+  const response = await authAPI.logout()
+  if (response.data.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
 }
 
 export default authReducer
