@@ -4,34 +4,20 @@ import style from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import { followThunkCreator, unfollowThunkCreator } from '../../redux/usersReducer';
 import { Field, Form, Formik } from 'formik';
+import Pagination from './Pagination';
 
 const Users = (props) => {
-  // debugger
-  let pagesCount = props.totalCount / props.pageSize;
-  let pages = [];
-  for (let i = 1; i <= Math.ceil(pagesCount); i++) {
-    pages.push(i);
-  }
 
   return (
     <div className={style.users}>
 
       <UsersSearchForm/>
 
-      <div className={style.pagination}>
-        {pages.map((page) => {
-          return (
-            <span
-              className={props.currentPage === page ? style.activePage : null}
-              onClick={() => {
-                props.onPageChange(page);
-              }}
-            >
-              {page}
-            </span>
-          );
-        })}
-      </div>
+      <Pagination 
+        currentPage={props.currentPage}
+        pageSize={props.pageSize}
+        onPageChange={props.onPageChange}
+        totalCount={props.totalCount}/>
 
       {props.users.map((el) => (
         <div key={el.id}>
