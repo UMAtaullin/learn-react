@@ -1,0 +1,59 @@
+.listPages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pageLink {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: 1px solid #007bff;
+  /* Цвет рамки */
+  border-radius: 5px;
+  /* Закругление углов */
+  background-color: white;
+  /* Цвет фона */
+  color: #007bff;
+  /* Цвет текста */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  /* Плавный переход */
+}
+
+.pageLink:hover {
+  background-color: #007bff;
+  /* Цвет фона при наведении */
+  color: white;
+  /* Цвет текста при наведении */
+}
+
+.selectedPage {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  /* Закругление углов */
+  background-color: #007bff;
+  /* Цвет фона для выбранной страницы */
+  color: white;
+  /* Цвет текста для выбранной страницы */
+}
+
+button {
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  /* Убираем рамку */
+  border-radius: 5px;
+  /* Закругление углов */
+  background-color: #007bff;
+  /* Цвет фона кнопок */
+  color: white;
+  /* Цвет текста кнопок */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+  /* Цвет фона кнопок при наведении */
+}
