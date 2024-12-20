@@ -42,7 +42,7 @@ const AddMessageForm = (props) => {
           component='textarea' 
           name='printMessage' 
           validate={requiredField}/>
-      <button>Send</button>
+      <button className={cls.btn}>Send</button>
     </form>
   );
 }

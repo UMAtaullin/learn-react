@@ -25,7 +25,7 @@ textarea {
   background: transparent;
 }
 
-button {
+.btn {
   flex: 1;
 
   padding: 16px 0;
