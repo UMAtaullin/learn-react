@@ -2,7 +2,6 @@ import React  from 'react';
 import ava from '../static/img/user.jpeg';
 import style from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import { followThunkCreator, unfollowThunkCreator } from '../../redux/usersReducer';
 import { Field, Form, Formik } from 'formik';
 import Pagination from './Pagination';
 
@@ -33,11 +32,11 @@ const Users = (props) => {
               <div className={style.btn}>
                 {el.followed ? (<button
                     disabled={props.disabledButton.some(id => id === el.id)}
-                    onClick={() => {unfollowThunkCreator(el.id)}}
+                    onClick={() => {props.unfollow(el.id)}}
                   >Unfollow</button>
                   ) : (<button
                     disabled={props.disabledButton.some(id => id === el.id)}
-                    onClick={() => {followThunkCreator(el.id)}}
+                    onClick={() => {props.follow(el.id)}}
                   >Follow</button>
                 )}
               </div>
