@@ -1,5 +1,5 @@
 import Preloader from '../../common/Preloader/Preloader';
-import cls from './ProfileInfo.module.css';
+import style from './ProfileInfo.module.css';
 import StatusWithHooks from './Status/StatusWithHooks';
 
 const ProfileInfo = (props) => {
@@ -8,12 +8,19 @@ const ProfileInfo = (props) => {
     return <div><Preloader/></div>;
   }
 
+  const onSelectedPhoto = (event) => {
+    if (event.target.files.length) {
+      props.savePhoto(event.target.files[0]);
+    }
+  }
+
   return (
-    <div className={cls.profile}>
-      <StatusWithHooks 
-        status={props.status} 
-        updateStatus={props.updateStatus} />
-      <div className={cls.ava}>
+    <div className={style.profile}>
+      <StatusWithHooks
+        status={props.status}
+        updateStatus={props.updateStatus}
+      />
+      <div className={style.ava}>
         <img
           src={
             props.profile.photos.large != null
@@ -22,18 +29,21 @@ const ProfileInfo = (props) => {
           }
           alt="Здесь должно было быть фото профиля"
         />
+        <div className={style.selectedPhoto}>
+          {props.isOwner && <input type="file" onChange={onSelectedPhoto} />}
+        </div>
       </div>
-      <div className={cls.description}>
-        <p className={cls.name}>
+      <div className={style.description}>
+        <p className={style.name}>
           <span>Name:</span> {props.profile.fullName}
         </p>
-        <p className={cls.name}>
+        <p className={style.name}>
           <span>About me:</span> {props.profile.aboutMe}
         </p>
-        <p className={cls.name}>
+        <p className={style.name}>
           <span>Interests:</span> {props.profile.lookingForAJobDescription}
         </p>
-        <p className={cls.name}>
+        <p className={style.name}>
           <span>Telegram:</span> {props.profile.contacts.github}
         </p>
       </div>

@@ -72,7 +72,6 @@ export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, is
 export const setDisabledButton = (isDisabling, userId) => ({ type: DISABLED_BUTTON, isDisabling, userId})
 
 
-
 export const getUsersThunkCreator = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetchingAC(true))
@@ -107,5 +106,6 @@ export const unfollowThunkCreator = (userId) => {
     });
   }
 }
+
 
 export default usersReducer 
