@@ -9,12 +9,21 @@ import withRouter from '../utils/withRouter';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
-  
-  componentDidMount() {
+
+  refreshProfile() {
     let userId = this.props.router.params.userId;
     if (!userId) userId = 31852;
-    this.props.getUserProfile(userId)
+    this.props.getUserProfile(userId);
     this.props.getUserStatus(userId);
+  }
+  
+  componentDidMount() {
+    this.refreshProfile()
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.router.params.userId !== prevProps.router.params.userId) {
+      this.refreshProfile()
+    }
   }
 
   render() {
