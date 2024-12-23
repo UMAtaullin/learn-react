@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import cls from '../ProfileInfo.module.css';
 
 const StatusWithHooks = (props) => {
 
@@ -52,7 +51,7 @@ const StatusWithHooks = (props) => {
   // }
 
   return (
-    <div className={cls.status}>
+    <>
       {!editStatus ? (
         <div>
           <span onDoubleClick={activateStatus}>
@@ -68,7 +67,7 @@ const StatusWithHooks = (props) => {
             value={status}/>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

@@ -10,8 +10,6 @@
 
 .row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   margin-bottom: 25px;
   padding-left: 20px;
@@ -21,20 +19,14 @@
 }
 
 textarea {
-  align-items: center;
-  flex: 3;
-
-  padding: 0 5px;
+  width: 80%;
 
   border: none;
   outline: none;
-  background: transparent;
 }
 
 .add {
-  flex: 1;
-
-  padding: 16px 0;
+  padding: 10px;
 
   cursor: pointer;
 

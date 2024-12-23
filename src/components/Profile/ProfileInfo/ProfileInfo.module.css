@@ -31,5 +31,11 @@
 }
 
 span {
-  color: #939393;
+  color: white;
 }
+
+.form {
+  color: black;
+  margin: 0;
+}
+

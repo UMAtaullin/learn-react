@@ -77,7 +77,6 @@ export const updateStatus = (status) =>
 }
 
 export const savePhotoTC = (photo) => {
-  debugger
   return (dispatch) => {
     profileAPI.savePhoto(photo).then((response) => {
       if (response.data.resultCode === 0) {
@@ -86,6 +85,22 @@ export const savePhotoTC = (photo) => {
     });
   }
 }
+export const saveDataThC = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId; // Получаем userId из состояния
+  try {
+    const response = await profileAPI.saveData(profile); // Запрос к API
+    if (response.data.resultCode === 0) {
+      dispatch(getUserProfile(userId)); // Обновляем профиль пользователя после успешного сохранения
+    } else {
+      console.error('Error saving data:', response.data.messages); // Логируем ошибки
+    }
+  } catch (error) {
+    console.error('Network error:', error); // Логируем сетевые ошибки
+  }
+};
+
+
+
 
 export default profileReducer
 

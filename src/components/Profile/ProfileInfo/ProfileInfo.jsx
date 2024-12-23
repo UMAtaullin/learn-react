@@ -1,51 +1,84 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Preloader from '../../common/Preloader/Preloader';
 import style from './ProfileInfo.module.css';
 import StatusWithHooks from './Status/StatusWithHooks';
+import ProfileData from './Data/ProfileData';
+import ProfileDataForm from './Data/ProfileDataForm';
+import ProfilePhoto from './Photo/ProfilePhoto';
 
 const ProfileInfo = (props) => {
-  // debugger
+  const [editMode, setEditMode] = useState(false);
+  const { register, handleSubmit, setValue } = useForm();
+
   if (!props.profile) {
-    return <div><Preloader/></div>;
+    return <Preloader />;
   }
 
   const onSelectedPhoto = (event) => {
     if (event.target.files.length) {
       props.savePhoto(event.target.files[0]);
     }
-  }
+  };
+
+  const goToEdit = () => {
+    setEditMode(true);
+    setValue('fullName', props.profile.fullName);
+    setValue('lookingForAJob', props.profile.lookingForAJob);
+    setValue(
+      'lookingForAJobDescription',
+      props.profile.lookingForAJobDescription
+    );
+    setValue('aboutMe', props.profile.aboutMe || ''); 
+    setValue('github', props.profile.contacts.github || '');
+    setValue('vk', props.profile.contacts.vk || '');
+  };
+
+  // Логика сохранения данных на сервере
+  const onSubmit = async (data) => {
+    const profileData = {
+      userId: props.userId,
+      lookingForAJob: data.lookingForAJob,
+      lookingForAJobDescription: data.lookingForAJobDescription,
+      fullName: data.fullName,
+      aboutMe: data.aboutMe, 
+      contacts: {
+        github: data.github,
+        vk: data.vk,
+      },
+    };
+
+    console.log('Submitted profile data:', profileData); // Логируем данные перед отправкой
+    await props.saveData(profileData); // Сохраняем данные
+    setEditMode(false);
+  };
 
   return (
     <div className={style.profile}>
-      <StatusWithHooks
-        status={props.status}
-        updateStatus={props.updateStatus}
-      />
-      <div className={style.ava}>
-        <img
-          src={
-            props.profile.photos.large != null
-              ? props.profile.photos.large
-              : 'https://avatars.dzeninfra.ru/get-zen_doc/9759668/pub_645cec1a20e1c7242b32db52_6460ad5c6edf700dfdf05e3a/scale_1200'
-          }
-          alt="Здесь должно было быть фото профиля"
+      <div className={style.status}>
+        <StatusWithHooks
+          status={props.status}
+          updateStatus={props.updateStatus}
         />
-        <div className={style.selectedPhoto}>
-          {props.isOwner && <input type="file" onChange={onSelectedPhoto} />}
-        </div>
       </div>
+      <ProfilePhoto
+        profile={props.profile}
+        isOwner={props.isOwner}
+        onSelectedPhoto={onSelectedPhoto}
+      />
       <div className={style.description}>
-        <p className={style.name}>
-          <span>Name:</span> {props.profile.fullName}
-        </p>
-        <p className={style.name}>
-          <span>About me:</span> {props.profile.aboutMe}
-        </p>
-        <p className={style.name}>
-          <span>Interests:</span> {props.profile.lookingForAJobDescription}
-        </p>
-        <p className={style.name}>
-          <span>Telegram:</span> {props.profile.contacts.github}
-        </p>
+        {editMode ? (
+          <ProfileDataForm
+            onSubmit={handleSubmit(onSubmit)}
+            register={register}
+          />
+        ) : (
+          <ProfileData
+            profile={props.profile}
+            isOwner={props.isOwner}
+            goToEdit={goToEdit}
+          />
+        )}
       </div>
     </div>
   );
