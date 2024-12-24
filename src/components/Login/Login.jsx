@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { login } from '../../redux/authReducer';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import style from './Login.module.css'
 import { Navigate } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
 
 const Login = (props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
+  const [rememberMe, setRememberMe] = useState(false); // Состояние для чекбокса
 
-  const {register, handleSubmit, formState: {errors} } = useForm()
+  // Загружаем данные из localStorage при монтировании компонента
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+    const savedRememberMe = localStorage.getItem('rememberMe') === 'true'; // Преобразуем строку в булевое значение
 
-  const onSubmit = (args) => {
-    props.login(args.email, args.password)
-  }
+    if (savedEmail && savedRememberMe) {
+      setValue('email', savedEmail);
+      setValue('password', savedPassword);
+      setRememberMe(true);
+    }
+  }, [setValue]);
+
+  const onSubmit = (data) => {
+    props.login(data.email, data.password);
+
+    // Если чекбокс установлен, сохраняем данные в localStorage
+    if (rememberMe) {
+      localStorage.setItem('username', data.email);
+      localStorage.setItem('password', data.password);
+      localStorage.setItem('rememberMe', true);
+    } else {
+      localStorage.removeItem('username');
+      localStorage.removeItem('password');
+      localStorage.setItem('rememberMe', false);
+    }
+  };
+
 
   if (props.isAuth) {
     return <Navigate to="/profile" />;
@@ -26,53 +56,11 @@ const Login = (props) => {
         register={register}
         errors={errors}
         errorMessage={props.errorMessage}
+        setRememberMe={setRememberMe} // Передаем функцию для изменения состояния чекбокса
       />
     </div>
   );
 };
-
-const LoginForm = ({ onSubmit, register, errors, errorMessage }) => {
-
-  return (
-    <form onSubmit={onSubmit}>
-      {errorMessage && (
-        <p className={style.error}>{errorMessage}</p>
-      )}
-      <div>
-        <label htmlFor="email"></label>
-        <input
-          type="email"
-          id="email"
-          {...register('email', {
-            required: "The user's name is required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address',
-            },
-          })}
-          placeholder="e-mail"
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
-      <div>
-        <label htmlFor="password"></label>
-        <input
-          type="password"
-          id="password"
-          {...register('password', { required: 'Password is required' })}
-          placeholder="password"
-        />
-        {errors.password && <div>{errors.password.message}</div>}
-      </div>
-      <input type="checkbox" {...register('remember me')} />
-      remember me
-      <button className={style.btn} type="submit">
-        Log in
-      </button>
-    </form>
-  );
-}
-
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
