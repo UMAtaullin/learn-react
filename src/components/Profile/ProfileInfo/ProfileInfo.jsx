@@ -9,7 +9,12 @@ import ProfilePhoto from './Photo/ProfilePhoto';
 
 const ProfileInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }, 
+    setValue,
+  } = useForm();
 
   if (!props.profile) {
     return <Preloader />;
@@ -71,6 +76,7 @@ const ProfileInfo = (props) => {
           <ProfileDataForm
             onSubmit={handleSubmit(onSubmit)}
             register={register}
+            errors={errors}
           />
         ) : (
           <ProfileData

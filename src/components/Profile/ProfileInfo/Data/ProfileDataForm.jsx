@@ -1,6 +1,6 @@
 import style from '../ProfileInfo.module.css';
 
-const ProfileDataForm = ({ onSubmit, register }) => {
+const ProfileDataForm = ({ onSubmit, register, errors }) => {
   return (
     <form onSubmit={onSubmit} className={style.form}>
       <div>
@@ -23,7 +23,18 @@ const ProfileDataForm = ({ onSubmit, register }) => {
       {/* Поля для контактов */}
       <div>
         <label>GitHub:</label>
-        <input type="text" {...register('github')} />
+        <input
+          type="text"
+          {...register('github', {
+            required: 'GitHub URL is required',
+            pattern: {
+              value: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_.-]+$/,
+              message: 'Invalid GitHub URL format',
+            },
+          })}
+        />
+        {errors.github && <p className={style.errors}>{errors.github.message}</p>}{' '}
+        {/* Отображение ошибки */}
       </div>
       <div>
         <label>VK:</label>

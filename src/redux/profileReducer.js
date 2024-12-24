@@ -99,9 +99,6 @@ export const saveDataThC = (profile) => async (dispatch, getState) => {
   }
 };
 
-
-
-
 export default profileReducer
 
 /* printText: action.printText - это способ передать новое значение текста из компонента в редюсер. Это позволяет вашему приложению оставаться синхронизированным с действиями пользователя и обновлять состояние на основе их ввода.*/

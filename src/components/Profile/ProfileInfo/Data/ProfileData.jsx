@@ -4,8 +4,8 @@ const ProfileData = ({ profile, isOwner, goToEdit }) => {
   return (
     <>
       {isOwner && (
-        <button className="editMode" onClick={goToEdit}>
-          edit
+        <button className={style.editMode} onClick={goToEdit}>
+          edit data
         </button>
       )}
       <p className={style.name}>
