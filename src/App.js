@@ -1,5 +1,5 @@
 import SideBar from './components/SideBar/SideBar';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import MessagesContainer from './components/Messenger/Messages/MessagesContainer';
@@ -15,23 +15,28 @@ class App extends Component {
   }
 
   render() {
-    
+
     return (
       <div className="app">
         <HeaderContainer />
         <SideBar />
         <div className="main">
           <Routes>
+            <Route 
+              exact path="/" 
+              element={<Navigate to={'/profile'} 
+              />} />
             <Route path="profile/:userId?"
               element={<ProfileContainer
-                />} />
+              />} />
             <Route path="/messages/"
               element={<MessagesContainer
               />} />
             <Route path="/users/"
-              element={<UsersContainer />}/>
+              element={<UsersContainer />} />
             <Route path="/login/"
-              element={<Login />}/>
+              element={<Login />} />
+
           </Routes>
         </div>
       </div>
@@ -41,5 +46,5 @@ class App extends Component {
 
 export default connect(
   null,
-  { getUsersThunkCreator})
+  { getUsersThunkCreator })
   (App)
