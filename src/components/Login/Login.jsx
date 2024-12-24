@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 
 const Login = (props) => {
 
-  const {register, handleSubmit } = useForm()
+  const {register, handleSubmit, formState: {errors} } = useForm()
 
   const onSubmit = (args) => {
     props.login(args.email, args.password)
@@ -21,20 +21,54 @@ const Login = (props) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginForm 
+      <LoginForm
         onSubmit={handleSubmit(onSubmit)}
-        register={register}/>
+        register={register}
+        errors={errors}
+        errorMessage={props.errorMessage}
+      />
     </div>
   );
 };
 
-const LoginForm = ({ onSubmit, register }) => {
+const LoginForm = ({ onSubmit, register, errors, errorMessage }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type='email' {...register('email')} />
-      <input type='password' {...register('password')} />
-      <button className={style.btn} type="submit">Log in</button>
+      {errorMessage && (
+        <p className={style.error}>{errorMessage}</p>
+      )}
+      <div>
+        <label htmlFor="email"></label>
+        <input
+          type="email"
+          id="email"
+          {...register('email', {
+            required: "The user's name is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Invalid email address',
+            },
+          })}
+          placeholder="e-mail"
+        />
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
+      <div>
+        <label htmlFor="password"></label>
+        <input
+          type="password"
+          id="password"
+          {...register('password', { required: 'Password is required' })}
+          placeholder="password"
+        />
+        {errors.password && <div>{errors.password.message}</div>}
+      </div>
+      <input type="checkbox" {...register('remember me')} />
+      remember me
+      <button className={style.btn} type="submit">
+        Log in
+      </button>
     </form>
   );
 }
@@ -42,6 +76,7 @@ const LoginForm = ({ onSubmit, register }) => {
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  errorMessage: state.auth.errorMessage,
 });
 
 export default connect(
@@ -49,8 +84,3 @@ export default connect(
   { login })
   (Login);
 
-// export default compose(
-//   connect(mapStateToProps, mapDispatchToProps),
-//   withAuthRedirect,
-
-// )(Messages);
